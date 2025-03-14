@@ -43,9 +43,11 @@ jobs:
   discord-alert:
     needs: mirror
     if: ${{ always() && contains(needs.*.result, 'failure') }} # https://stackoverflow.com/questions/71430668/how-to-run-a-github-actions-job-on-workflow-failure
-    name: Send message to Discord
-    uses: Enichy/Send_Discord_Message_Action@v1.1.11
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
-      message: '@CiCd A test failed!'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send Discord Message
+      uses: Enichy/Send_Discord_Message_Action@v1.1.11
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: '@CiCd A test failed!'
