@@ -5,7 +5,7 @@ on:
     branches: main
 
 env:
-  ACTION_FILE: .github/workflows/
+  ACTION_FILE: .github/workflows/epitech-mirroring.yml
   MIRROR_URL: git@github.com:EpitechPromo2027/G-EIP-600-NCY-6-1-eip-sacha.dacalor-fourcade.git
   TARGET_BRANCH: mirror
   CURRENT_BRANCH: main
