@@ -1,0 +1,13 @@
+.vscode/
+
+build/
+_CPack_Packages/
+CMakeUserPresets.json
+
+doxygen/
+venvconan/
+
+*.deb
+*.out
+*.so
+*.log

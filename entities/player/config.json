@@ -1,0 +1,20 @@
+{
+    step_sound_strength = 10,
+    has_vision = true,
+    vision_strength = 120,
+    has_hearing = false,
+    world_position = {0, 0}
+    vision_scripts = [
+        {
+            id = "entity_id",
+            fun = ".lua/function",
+            priority = 1
+        },
+        {
+            id = "start",
+            fun = ".lua/star_sighted",
+            priority = 2
+        }
+    ]
+    default_behavior_fun = ".lua/default"
+}
