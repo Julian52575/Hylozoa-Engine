@@ -49,5 +49,5 @@ jobs:
       uses: Enichy/Send_Discord_Message_Action@v1.1.11
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        discord_webhook: ${{ secrets.DISCORD_WEBHOOK_CICD }}
         message: '@CiCd A test failed!'
