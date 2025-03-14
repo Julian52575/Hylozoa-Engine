@@ -5,7 +5,7 @@ on:
     branches: main
 
 env:
-  ACTION_FILE: .github/workflows/interpretor-mirroring.yml
+  ACTION_FILE: .github/workflows/
   MIRROR_URL: git@github.com:EpitechPromo2027/G-EIP-600-NCY-6-1-eip-sacha.dacalor-fourcade.git
   TARGET_BRANCH: mirror
   CURRENT_BRANCH: main
@@ -39,3 +39,13 @@ jobs:
             git config --global user.email "julian.bottiglione@epitech.eu"
             git commit --amend --reuse-message=HEAD
             git push --set-upstream origin-destination ${{ env.TARGET_BRANCH }}
+
+  discord-alert:
+    needs: mirror
+    if: ${{ always() && contains(needs.*.result, 'failure') }} # https://stackoverflow.com/questions/71430668/how-to-run-a-github-actions-job-on-workflow-failure
+    name: Send message to Discord
+    uses: Enichy/Send_Discord_Message_Action@v1.1.11
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      message: '@CiCd A test failed!'
