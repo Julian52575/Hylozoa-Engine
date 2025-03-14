@@ -1,0 +1,41 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches: main
+
+env:
+  ACTION_FILE: .github/workflows/interpretor-mirroring.yml
+  MIRROR_URL: git@github.com:EpitechPromo2027/G-EIP-600-NCY-6-1-eip-sacha.dacalor-fourcade.git
+  TARGET_BRANCH: mirror
+  CURRENT_BRANCH: main
+  COMMIT_MSG: "[mirror] ${{ github.event.head_commit.message }}"
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure full history is fetched
+      - name: Mirror push without mirroring workflow
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+            mkdir -p ~/.ssh
+            echo "${{ secrets.SSH_KEY }}" > ~/.ssh/github_actions
+            chmod 600 ~/.ssh/github_actions
+            ssh-agent -a $SSH_AUTH_SOCK > /dev/null	
+            ssh-add ~/.ssh/github_actions
+            rm ~/.ssh/github_actions
+
+            git remote add origin-destination ${{ env.MIRROR_URL }}
+            git remote add origin-source ${{ github.repositoryUrl }}
+            git checkout -b ${{ env.TARGET_BRANCH }}
+            
+            git rm ${{ env.ACTION_FILE }}
+            git config --global user.name "julian.bottiglione"
+            git config --global user.email "julian.bottiglione@epitech.eu"
+            git commit --amend --reuse-message=HEAD
+            git push --set-upstream origin-destination ${{ env.TARGET_BRANCH }}
