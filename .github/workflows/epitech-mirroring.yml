@@ -37,7 +37,7 @@ jobs:
             git config --global user.name "julian.bottiglione"
             git config --global user.email "julian.bottiglione@epitech.eu"
             git commit --amend --reuse-message=HEAD
-            git push --set-upstream origin-destination ${{ env.TARGET_BRANCH }}
+            git push --force --set-upstream origin-destination ${{ env.TARGET_BRANCH }}
 
   discord-alert:
     needs: mirror
