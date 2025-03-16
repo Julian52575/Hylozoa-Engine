@@ -7,3 +7,5 @@
 -I/usr/include/x86_64-linux-gnu
 -I/usr/include
 --std=c++17
+
+-iquote.
