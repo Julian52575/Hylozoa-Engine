@@ -1,0 +1,6 @@
+{
+    "config_dir" : "entities",
+    "entities" : [
+        "player/config.json"
+    ]
+}

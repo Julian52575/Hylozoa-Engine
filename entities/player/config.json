@@ -1,8 +1,10 @@
 {
+    "name": "player",
+    "sprite": "mario.png",
     "world_position": [0, 0],
     "script_file" : "player.lua",
     "default_behavior_fun": "default",
-    "components": ["vision", "hearing"],
+    "components": ["sprite", "vision", "hearing"],
     "vision_strength_meter": 120,
     "vision_scripts": [
         {
@@ -10,7 +12,7 @@
             "priority": 0
         },
         {
-            "id": 15,
+            "target_id": 15,
             "fun": "star_sight",
             "priority": 2
         }

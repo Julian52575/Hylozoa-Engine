@@ -11,3 +11,5 @@ venvconan/
 *.out
 *.so
 *.log
+logs
+hylozoa-engine
