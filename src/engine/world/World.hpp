@@ -3,14 +3,18 @@
 #ifndef ENGINE_WORLD_WORLD_HPP
     #define ENGINE_WORLD_WORLD_HPP
 
+#include <cstddef>
 #include <exception>
+#include <functional>
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
+#include <optional>
 #include <rengine/src/ECS.hpp>
 #include <rengine/src/Graphics/ASprite.hpp>
 #include <rengine/src/Graphics/GraphicManager.hpp>
 #include <rengine/src/Graphics/SpriteSpecs.hpp>
+#include <rengine/src/Graphics/Vector.hpp>
 #include <rengine/src/SparseArray.hpp>
 #include <stdexcept>
 #include <string>
@@ -19,10 +23,13 @@
 #include <filesystem>
 #include <rengine/RengineGraphics.hpp>
 
+#include "src/components/hitbox.hpp"
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
+#include "src/components/vision.hpp"
 #include "src/engine/LoggingManager.hpp"
 #include "src/engine/entities/Entity.hpp"
+#include "src/engine/options/options.hpp"
 #include "src/lib/Singleton.hpp"
 
 namespace Engine {
@@ -31,6 +38,7 @@ namespace Engine {
         public:
             World(const std::string& configPath)
             {
+                // Parse World config
                 Lib::Singleton<Engine::LoggingManager>::getInstance() << "World constructor with '";
                 Lib::Singleton<Engine::LoggingManager>::getInstance() << configPath << "'\n"; ////////////
 
@@ -75,17 +83,38 @@ namespace Engine {
             void render()
             {
                 this->renderGround();
-                Rengine::SparseArray<Components::Sprite>& sp = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Sprite>();
-                Rengine::SparseArray<Components::Position>& pos = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Position>();
+                Rengine::SparseArray<Components::Sprite>& sprites
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Sprite>();
+                Rengine::SparseArray<Components::Position>& positions
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Position>();
+                std::optional<std::reference_wrapper<Rengine::SparseArray<Components::Vision>>> maybeVisions = std::nullopt;
+                std::optional<std::reference_wrapper<Rengine::SparseArray<Components::Hitbox>>> maybeHitboxs = std::nullopt;
 
-                for (auto &eId : this->_entityList) {
-                    if (sp[eId].has_value() == false) {
+                // Set vision sparse array if Vision Circle debug is set
+                if (Lib::Singleton<Options::Debug>::getInstance().showVision == true) {
+                    maybeVisions = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Vision>();
+                    maybeHitboxs = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Hitbox>();
+                }
+                // Parse all entities up the highest id
+                for (Rengine::ECS::size_type eId = 0; eId <= Lib::Singleton<Rengine::ECS>::getInstance().getHighestEntityId(); eId++) {
+                    // Ensure entity id is active
+                    if (Lib::Singleton<Rengine::ECS>::getInstance().isEntityActive(eId) == false) {
                         continue;
                     }
-                    if (pos[eId].has_value() == false) {
+                    // Ensure entity has both a sprite and a position
+                    if (sprites[eId].has_value() == false
+                    || positions[eId].has_value() == false) {
                         continue;
                     }
-                    sp[eId]->render(pos[eId].value());
+                    sprites[eId]->render(positions[eId].value());
+                    // Render Vision Circle if the Vision Sparse Array was set previously
+                    if (maybeVisions != std::nullopt
+                    && maybeVisions->get()[eId].has_value() == true
+                    && maybeHitboxs != std::nullopt
+                    && maybeHitboxs->get()[eId].has_value() == true) {
+                        this->renderVisionCircle(maybeVisions->get()[eId].value(),
+                            positions[eId].value(), maybeHitboxs->get()[eId].value());
+                    }
                 }
             }
 
@@ -104,8 +133,45 @@ namespace Engine {
             }
 
         private:
+            inline void initVisionCircle()
+            {
+                this->_visionCircleSpecs.type = Rengine::Graphics::SpriteTypeCircle;
+                this->_visionCircleSpecs.opacity = 0.0;
+                this->_visionCircleSpecs.shapeData.outlineColor = {255, 0, 0};
+                this->_visionCircleSpecs.shapeData.outlineThickness = 2.0;
+                this->_visionCircle = Rengine::Graphics::GraphicManagerSingletone::get().createSprite(
+                    this->_visionCircleSpecs
+                );
+            }
+            inline void renderVisionCircle(const Components::Vision& vis, const Components::Position& pos, const Components::Hitbox& hit)
+            {
+                if (this->_visionCircle == nullptr) {
+                    this->initVisionCircle();
+                }
+                Rengine::Graphics::vector2D<double> posVector;
+                Components::HitboxData hitboxData;
+
+                // Update circle radius to match vision strength
+                this->_visionCircleSpecs.shapeData.specifics.circleRadius = (float) vis.getVisionStrength();
+                this->_visionCircle->updateSpriteSpecs(this->_visionCircleSpecs);
+                // a
+                pos.get(posVector.x, posVector.y);
+                hit.get(hitboxData);
+                Rengine::Graphics::GraphicManagerSingletone::get().addToRender(this->_visionCircle,
+                {
+                    (float) posVector.x - (hitboxData.hitboxSize.x / 2),
+                    (float) posVector.y - (hitboxData.hitboxSize.y / 2)
+                    }
+                );
+            }
+
+        private:
+            Rengine::Graphics::SpriteSpecs _visionCircleSpecs;
+            std::shared_ptr<Rengine::Graphics::ASprite> _visionCircle = nullptr;
+
+        private:
+            std::shared_ptr<Rengine::Graphics::ASprite> _groundSprite = nullptr;
             std::vector<Engine::Entities::Entity::size_type> _entityList;
-            std::shared_ptr<Rengine::Graphics::ASprite> _groundSprite;
     };  // World
 }  // Engine
 

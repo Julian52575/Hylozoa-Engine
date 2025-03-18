@@ -3,10 +3,13 @@
 
 #include <cstdint>
 #include <functional>
+#include <memory>
 #include <sched.h>
 #include <vector>
 
 #include "src/engine/entities/Script.hpp"
+#include "src/engine/options/options.hpp"
+#include "src/lib/Singleton.hpp"
 
 namespace Components {
     struct VisionConfig {
@@ -30,7 +33,12 @@ namespace Components {
 
             void updateScript(Engine::Entities::Script& script)
             {
-
+                // Check entities withing vision radius
+                // machin
+            }
+            std::uint64_t getVisionStrength() const noexcept
+            {
+                return this->_visionStrengthMeter;
             }
 
         private:

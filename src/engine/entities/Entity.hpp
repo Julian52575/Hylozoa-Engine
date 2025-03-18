@@ -12,6 +12,7 @@
 
 #include "EntityConfig.hpp"
 #include "Script.hpp"
+#include "src/components/configuration.hpp"
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
 #include "src/components/vision.hpp"
@@ -37,8 +38,6 @@ namespace Entities {
                         this->_script = Script(con.script_file.value(), con.default_behavior_fun.value());
                     }
                     this->addComponents(configPath, con);
-                    Lib::Singleton<Engine::LoggingManager>::getInstance() << "Created entity " << std::to_string(this->_id.value());
-                    Lib::Singleton<Engine::LoggingManager>::getInstance().flush();
                 } catch (std::exception &e) {
                     throw std::runtime_error(std::string("Error on entity constructor from config file '")
                         + configPath
@@ -95,6 +94,7 @@ namespace Entities {
                     }
                 }
                 en.addComponent<Components::Position>(con.world_position[0], con.world_position[1]);
+                en.addComponent<Components::Configuration>(con);
             }
 
         protected:

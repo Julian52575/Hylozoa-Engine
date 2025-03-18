@@ -24,7 +24,6 @@ namespace Engine {
                 if (!this->_file) {
                     throw std::runtime_error("Error on log constructor");
                 }
-                this->_file << "Created" << std::endl;
             }
             ~LoggingManager()
             {
@@ -38,15 +37,27 @@ namespace Engine {
             {
                 log._buffer = log._buffer + msg;
                 if (msg.find("\n") != std::string::npos) {
-                    log._file << log._buffer << std::endl;
+                    log._file << log._buffer;
                     log._buffer.clear();
                 }
+                return log;
+            }
+            friend LoggingManager& operator<<(LoggingManager& log, const int&& i)
+            {
+                log._buffer = log._buffer + std::to_string(i);
                 return log;
             }
             void flush()
             {
                 this->_file << this->_buffer << std::endl;
                 this->_buffer.clear();
+            }
+            void logTime()
+            {
+                std::string timeBuff;
+
+                this->getTime(timeBuff);
+                this->_buffer += '[' + timeBuff + "] ";
             }
 
         private:
@@ -61,6 +72,17 @@ namespace Engine {
                     + ":" + std::to_string(datetime.tm_min)
                     + ":" + std::to_string(datetime.tm_sec)
                     + ".txt";
+            }
+            inline void getTime(std::string& out)
+            {
+                time_t timestamp = time(&timestamp);
+                struct tm datetime = *localtime(&timestamp);
+
+                out = std::to_string(datetime.tm_hour)
+                    + ':'
+                    + std::to_string(datetime.tm_min)
+                    + ":"
+                    + std::to_string(datetime.tm_sec);
             }
 
         private:

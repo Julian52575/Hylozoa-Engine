@@ -23,6 +23,11 @@ namespace Entities {
 
             }
 
+            void runFrame(void)
+            {
+
+            }
+
         private:
             std::string _defaultBehaviorFun = "default";
             // lua handler i guess

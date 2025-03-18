@@ -11,17 +11,6 @@ namespace Components {
         Rengine::Graphics::vector2D<unsigned int> hitboxSize;
         std::string layer;
         std::vector<std::string> collidingLayers;
-
-        HitboxData& operator=(const HitboxData& other) {
-            if (this != &other) {
-                hitboxSize.x = other.hitboxSize.x;
-                hitboxSize.y = other.hitboxSize.y;
-                layer = other.layer;
-                collidingLayers = other.collidingLayers;
-            }
-
-            return *this;
-        }
     };
 
     class Hitbox {
@@ -30,12 +19,12 @@ namespace Components {
             Hitbox(const HitboxData &specs) { _specs = specs; };
             ~Hitbox() = default;
 
-            inline void get(HitboxData &specs) const noexcept
+            inline void get(HitboxData &out) const noexcept
             {
-                specs.hitboxSize.x = _specs.hitboxSize.x;
-                specs.hitboxSize.y = _specs.hitboxSize.y;
-                specs.layer = _specs.layer;
-                specs.collidingLayers = _specs.collidingLayers;
+                out.hitboxSize.x = _specs.hitboxSize.x;
+                out.hitboxSize.y = _specs.hitboxSize.y;
+                out.layer = _specs.layer;
+                out.collidingLayers = _specs.collidingLayers;
             }
 
             static void componentFunction(Rengine::ECS& ecs, Components::Hitbox& hitbox, Rengine::Entity& entity);
