@@ -10,6 +10,7 @@
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
 #include "src/components/vision.hpp"
+#include "src/components/hitbox.hpp"
 #include "src/lib/Singleton.hpp"
 
 
@@ -21,6 +22,9 @@ void initECS()
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Position>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Sprite>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Vision>();
+
+    Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Hitbox>();
+    Lib::Singleton<Rengine::ECS>::getInstance().setComponentFunction<Components::Hitbox>(Components::Hitbox::componentFunction);
 }
 
 void initWindow()
@@ -44,6 +48,7 @@ int main(int ac, char * const *argv)
         world.render();
         Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->render();
         Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->pollInput();
+        Lib::Singleton<Rengine::ECS>::getInstance().runComponentFunction<Components::Hitbox>();
         if (Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->getInputManager().receivedInput(
         Rengine::Graphics::UserInputType::UserInputTypeWindowClosed)) {
             Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->close();

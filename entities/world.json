@@ -1,6 +1,7 @@
 {
     "config_dir" : "entities",
     "entities" : [
-        "player/config.json"
+        "player/config.json",
+        "collider/config.json"
     ]
 }

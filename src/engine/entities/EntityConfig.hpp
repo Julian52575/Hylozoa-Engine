@@ -8,6 +8,7 @@
 #include <fstream>
 
 #include "src/components/vision.hpp"
+#include "src/components/hitbox.hpp"
 
 namespace Engine {
 namespace Entities {
@@ -20,6 +21,7 @@ namespace Entities {
         int steps_sound_strength = 10;
         std::vector<std::string> components;
         std::vector<double> world_position;
+        std::optional<Components::HitboxData> hitbox_specs;
 
         Components::VisionConfig vision_config;
     };
@@ -53,6 +55,22 @@ Config getEntityConfigFromJson(const std::string& jsonPath) {
         config.vision_config.vision_scripts.push_back(vs);
     }
     config.default_behavior_fun = j["default_behavior_fun"];
+
+    if (j.contains("hitbox") && j["hitbox"].contains("size") &&
+        j["hitbox"].contains("layer") && j["hitbox"].contains("collideWith")) {
+            config.hitbox_specs = Components::HitboxData{
+                {j["hitbox"]["size"]["x"].get<unsigned int>(), j["hitbox"]["size"]["y"].get<unsigned int>()},
+                j["hitbox"]["layer"].get<std::string>(),
+                j["hitbox"]["collideWith"].get<std::vector<std::string>>()
+            };
+        std::cout << "Hitbox size: " << config.hitbox_specs->hitboxSize.x << " : " << config.hitbox_specs->hitboxSize.y
+        << "\nLayer : " << config.hitbox_specs->layer << " colliding with layers : ";
+        for (const auto& layer : config.hitbox_specs->collidingLayers) {
+            std::cout << layer << " ";
+        }
+        std::cout << std::endl;
+    }
+
     return config;
 }
 

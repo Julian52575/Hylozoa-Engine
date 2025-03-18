@@ -15,6 +15,7 @@
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
 #include "src/components/vision.hpp"
+#include "src/components/hitbox.hpp"
 #include "src/lib/Singleton.hpp"
 #include "src/engine/LoggingManager.hpp"
 
@@ -82,6 +83,15 @@ namespace Entities {
                         }
                     } else if (currentName == "hearing") {
                         Lib::Singleton<LoggingManager>::getInstance() << "Warning: hearing module not implemented.\n";
+                    }
+                    if (currentName == "hitbox") {
+                        if (con.hitbox_specs.has_value()) {
+                            en.addComponent<Components::Hitbox>(con.hitbox_specs.value());
+                            std::cout << "hitbox added successfully" << std::endl;
+                        } else {
+                            std::cerr << "Specs error" << std::endl;
+                            throw std::runtime_error("No hitbox specs provided.");
+                        }
                     }
                 }
                 en.addComponent<Components::Position>(con.world_position[0], con.world_position[1]);
