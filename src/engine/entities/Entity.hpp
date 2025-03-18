@@ -15,6 +15,7 @@
 #include "src/components/configuration.hpp"
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
+#include "src/components/velocity.hpp"
 #include "src/components/vision.hpp"
 #include "src/components/hitbox.hpp"
 #include "src/lib/Singleton.hpp"
@@ -61,9 +62,16 @@ namespace Entities {
                 Rengine::Entity en = Lib::Singleton<Rengine::ECS>::getInstance().addEntity();
 
                 this->_id = en;
+                // default components
                 en.addComponent<Components::Position>(con.world_position[0], con.world_position[1]);
-                if (con.components.size() == 0) {
-                    return;
+                en.addComponent<Components::Velocity>();
+                en.addComponent<Components::Configuration>(con);
+                if (con.hitbox_specs.has_value()) {
+                    en.addComponent<Components::Hitbox>(con.hitbox_specs.value());
+                    std::cout << "hitbox added successfully" << std::endl;
+                } else {
+                    std::cerr << "Specs error" << std::endl;
+                    throw std::runtime_error("No hitbox specs provided.");
                 }
                 for (auto currentName : con.components) {
                     if (currentName == "vision") {
@@ -83,18 +91,7 @@ namespace Entities {
                     } else if (currentName == "hearing") {
                         Lib::Singleton<LoggingManager>::getInstance() << "Warning: hearing module not implemented.\n";
                     }
-                    if (currentName == "hitbox") {
-                        if (con.hitbox_specs.has_value()) {
-                            en.addComponent<Components::Hitbox>(con.hitbox_specs.value());
-                            std::cout << "hitbox added successfully" << std::endl;
-                        } else {
-                            std::cerr << "Specs error" << std::endl;
-                            throw std::runtime_error("No hitbox specs provided.");
-                        }
-                    }
                 }
-                en.addComponent<Components::Position>(con.world_position[0], con.world_position[1]);
-                en.addComponent<Components::Configuration>(con);
             }
 
         protected:

@@ -28,6 +28,7 @@ void initECS()
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Vision>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Hitbox>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Configuration>();
+    Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Velocity>();
     Lib::Singleton<Rengine::ECS>::getInstance().setComponentFunction<Components::Hitbox>(Components::Hitbox::componentFunction);
     std::function<void(Rengine::Entity&)> onCreateFun =
         [](Rengine::Entity& en) {
@@ -105,6 +106,8 @@ int main(int ac, char * const *argv)
         Lib::Singleton<Rengine::ECS>::getInstance().runComponentFunction<Components::Hitbox>();
 
         // Render
+        world.applyGravityToEntities();
+        world.applyVelocityToEntities();
         world.render();
         Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->render();
 

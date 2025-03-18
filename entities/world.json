@@ -2,6 +2,6 @@
     "config_dir" : "entities",
     "entities" : [
         "player/config.json",
-        "collider/config.json"
+        "strawberry/config.json"
     ]
 }

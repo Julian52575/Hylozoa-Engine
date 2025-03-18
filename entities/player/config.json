@@ -20,8 +20,8 @@
     "steps_sound_strength": 10,
     "hitbox": {
         "size": {
-            "x": 50,
-            "y": 50
+            "x": 160,
+            "y": 200
         },
         "layer": "player",
         "collideWith": ["collider"]

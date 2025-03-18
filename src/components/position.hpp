@@ -16,6 +16,22 @@ namespace Components {
                 xOut = this->_x;
                 yOut = this->_y;
             }
+            double& getX() noexcept
+            {
+                return this->_x;
+            }
+            double getX() const noexcept
+            {
+                return this->_x;
+            }
+            double& getY() noexcept
+            {
+                return this->_y;
+            }
+            double getY() const noexcept
+            {
+                return this->_y;
+            }
 
         private:
             double _x = 0;

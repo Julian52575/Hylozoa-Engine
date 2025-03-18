@@ -26,6 +26,7 @@
 #include "src/components/hitbox.hpp"
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
+#include "src/components/velocity.hpp"
 #include "src/components/vision.hpp"
 #include "src/engine/LoggingManager.hpp"
 #include "src/engine/entities/Entity.hpp"
@@ -117,6 +118,64 @@ namespace Engine {
                     }
                 }
             }
+            void applyGravityToEntities()
+            {
+                Rengine::SparseArray<Components::Hitbox>& hitboxs
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Hitbox>();
+                Rengine::SparseArray<Components::Velocity>& velocities
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Velocity>();
+                Rengine::SparseArray<Components::Position>& positions
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Position>();
+                double x = 0.0;
+                double y = 0.0;
+                Components::HitboxData hitboxData;
+
+                for (Rengine::ECS::size_type eId = 0; eId <= Lib::Singleton<Rengine::ECS>::getInstance().getHighestEntityId(); eId++) {
+                    // Ignore entities that miss the components
+                    if (hitboxs[eId].has_value() == false
+                    || velocities[eId].has_value() == false
+                    || positions[eId].has_value() == false) {
+                        continue;
+                    }
+                    positions[eId]->get(x, y);
+                    hitboxs[eId]->get(hitboxData);
+                    // Do nothing on grounded entity
+                    if (y - (hitboxData.hitboxSize.y / 2) >= this->_groundY) {
+                        continue;
+                    }
+                    velocities[eId]->getY() += this->_fallingSpeed;
+                }
+            }
+            void applyVelocityToEntities()
+            {
+                Rengine::SparseArray<Components::Hitbox>& hitboxs
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Hitbox>();
+                Rengine::SparseArray<Components::Velocity>& velocities
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Velocity>();
+                Rengine::SparseArray<Components::Position>& positions
+                    = Lib::Singleton<Rengine::ECS>::getInstance().getComponents<Components::Position>();
+                Components::HitboxData hitboxData;
+
+                for (Rengine::ECS::size_type eId = 0; eId <= Lib::Singleton<Rengine::ECS>::getInstance().getHighestEntityId(); eId++) {
+                     // Ignore entities that miss the components
+                    if (hitboxs[eId].has_value() == false
+                    || velocities[eId].has_value() == false
+                    || positions[eId].has_value() == false) {
+                        continue;
+                    }
+                    // Update positions
+                    positions[eId]->getX() += (velocities[eId]->getX() * 8.4);
+                    positions[eId]->getY() += (velocities[eId]->getY() * 7.8);
+                    // Reset velocity
+                    velocities[eId]->getX() = 0;
+                    velocities[eId]->getY() = 0;
+                    // Ground correction
+                    hitboxs[eId]->get(hitboxData);
+                    if (positions[eId]->getY() + (hitboxData.hitboxSize.y / 2) >= this->_groundY) {
+                        positions[eId]->getY() = this->_groundY - (hitboxData.hitboxSize.y / 2);
+                    }
+                }
+            }
 
         private:
             inline void initGround()
@@ -129,7 +188,7 @@ namespace Engine {
             }
             inline void renderGround()
             {
-                Rengine::Graphics::GraphicManagerSingletone::get().addToRender(this->_groundSprite, {0, 800});
+                Rengine::Graphics::GraphicManagerSingletone::get().addToRender(this->_groundSprite, {0, (float) this->_groundY});
             }
 
         private:
@@ -170,6 +229,8 @@ namespace Engine {
             std::shared_ptr<Rengine::Graphics::ASprite> _visionCircle = nullptr;
 
         private:
+            double _groundY = 900;
+            double _fallingSpeed = 0.8;
             std::shared_ptr<Rengine::Graphics::ASprite> _groundSprite = nullptr;
             std::vector<Engine::Entities::Entity::size_type> _entityList;
     };  // World
