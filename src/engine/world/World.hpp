@@ -11,6 +11,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <rengine/src/ECS.hpp>
+#include <rengine/src/Entity.hpp>
 #include <rengine/src/Graphics/ASprite.hpp>
 #include <rengine/src/Graphics/GraphicManager.hpp>
 #include <rengine/src/Graphics/SpriteSpecs.hpp>
@@ -24,6 +25,7 @@
 #include <rengine/RengineGraphics.hpp>
 
 #include "src/components/hitbox.hpp"
+#include "src/components/playable.hpp"
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
 #include "src/components/velocity.hpp"
@@ -62,13 +64,20 @@ namespace Engine {
                         }
                     }
                     for (const auto& currentConfig : j["entities"]) {
-                        if (currentConfig.is_string() == false) {
-                            throw std::runtime_error("Invalid element in entities array");
+                        if (currentConfig.contains("config") == false) {
+                            throw std::runtime_error("No 'config' field in 'entities' array");
                         }
-                        Engine::Entities::Entity en = Engine::Entities::Entity(config_dir + std::string(currentConfig));
+                        std::string configPath = std::string(currentConfig["config"]);
+                        Engine::Entities::Entity en = Engine::Entities::Entity(config_dir + configPath);
 
                         this->_entityList.push_back(Engine::Entities::Entity::size_type(en));
-                        std::cout << "Added " << en << " to world" << std::endl;  ////////
+                        if (currentConfig.contains("playable") == true
+                        && currentConfig["playable"].is_boolean() == true) {
+                            Rengine::Entity& rengineEntity = Lib::Singleton<Rengine::ECS>::getInstance().getEntity(int(en));
+
+                            rengineEntity.addComponent<Components::Playable>();
+                            Lib::Singleton<Engine::LoggingManager>::getInstance() << "Applied playable to entity #" << Rengine::Entity::size_type(en) << "\n";
+                        }
                     }
                 } catch (std::exception &e) {
                     throw std::runtime_error(
@@ -212,14 +221,16 @@ namespace Engine {
 
                 // Update circle radius to match vision strength
                 this->_visionCircleSpecs.shapeData.specifics.circleRadius = (float) vis.getVisionStrength();
+                this->_visionCircleSpecs.originOffset.x = (float) vis.getVisionStrength();
+                this->_visionCircleSpecs.originOffset.y = (float) vis.getVisionStrength();
                 this->_visionCircle->updateSpriteSpecs(this->_visionCircleSpecs);
                 // a
                 pos.get(posVector.x, posVector.y);
                 hit.get(hitboxData);
                 Rengine::Graphics::GraphicManagerSingletone::get().addToRender(this->_visionCircle,
                 {
-                    (float) posVector.x - (hitboxData.hitboxSize.x / 2),
-                    (float) posVector.y - (hitboxData.hitboxSize.y / 2)
+                    (float) posVector.x ,//- hitboxData.hitboxSize.x,
+                    (float) posVector.y //- hitboxData.hitboxSize.y
                     }
                 );
             }

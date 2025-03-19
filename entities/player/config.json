@@ -5,7 +5,7 @@
     "script_file" : "player.lua",
     "default_behavior_fun": "default",
     "components": ["sprite", "vision", "hearing", "hitbox"],
-    "vision_strength_meter": 120,
+    "vision_strength_meter": 300,
     "vision_scripts": [
         {
             "fun": "default_sight",
@@ -20,8 +20,8 @@
     "steps_sound_strength": 10,
     "hitbox": {
         "size": {
-            "x": 160,
-            "y": 200
+            "x": 76,
+            "y": 101
         },
         "layer": "player",
         "collideWith": ["collider"]

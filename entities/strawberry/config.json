@@ -15,8 +15,8 @@
     "steps_sound_strength": 0,
     "hitbox": {
         "size": {
-            "x": 180,
-            "y": 180
+            "x": 59,
+            "y": 78
         },
         "layer": "collider",
         "collideWith": ["player"]

@@ -10,6 +10,15 @@ namespace Components {
             Velocity(const double &&x, const double &&y)
                 : _x(x), _y(y) {}
             ~Velocity() = default;
+            void cap(double max)
+            {
+                if (this->_x  > max) {
+                    this->_x = max;
+                }
+                if (this->_y > max) {
+                    this->_y = max;
+                }
+            }
 
             Velocity& operator+(Velocity& other)
             {

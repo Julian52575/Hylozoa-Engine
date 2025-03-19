@@ -1,7 +1,12 @@
 {
     "config_dir" : "entities",
     "entities" : [
-        "player/config.json",
-        "strawberry/config.json"
+        {
+            "config" : "player/config.json",
+            "playable" : true
+        },
+        {
+            "config" : "strawberry/config.json"
+        }
     ]
 }

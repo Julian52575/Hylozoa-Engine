@@ -15,6 +15,7 @@ namespace Entities {
     // Structure to hold the parsed data
     struct Config {
         std::string name;
+        bool playable = false;
         std::string sprite;
         std::optional<std::string> script_file;
         std::optional<std::string> default_behavior_fun;

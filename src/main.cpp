@@ -11,6 +11,7 @@
 
 #include "engine/world/World.hpp"
 #include "src/components/configuration.hpp"
+#include "src/components/playable.hpp"
 #include "src/components/position.hpp"
 #include "src/components/sprite.hpp"
 #include "src/components/vision.hpp"
@@ -27,22 +28,24 @@ void initECS()
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Sprite>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Vision>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Hitbox>();
+    Lib::Singleton<Rengine::ECS>::getInstance().setComponentFunction<Components::Hitbox>(Components::Hitbox::componentFunction);
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Configuration>();
     Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Velocity>();
-    Lib::Singleton<Rengine::ECS>::getInstance().setComponentFunction<Components::Hitbox>(Components::Hitbox::componentFunction);
-    std::function<void(Rengine::Entity&)> onCreateFun =
+    Lib::Singleton<Rengine::ECS>::getInstance().registerComponent<Components::Playable>();
+    Lib::Singleton<Rengine::ECS>::getInstance().setComponentFunction<Components::Playable>(Components::Playable::componentFunction);
+    /*std::function<void(Rengine::Entity&)> onCreateFun =
         [](Rengine::Entity& en) {
             Lib::Singleton<Engine::LoggingManager>::getInstance().logTime();
             Lib::Singleton<Engine::LoggingManager>::getInstance() << "Creating entity #" << Rengine::ECS::size_type(en) << "\n";
             return;
-        };
+        };*/
     /*std::function<void(Rengine::Entity&)> onDestroyFun =
         [](Rengine::Entity& en) {
             Lib::Singleton<Engine::LoggingManager>::getInstance().logTime();
             Lib::Singleton<Engine::LoggingManager>::getInstance() << "Destroying entity #" << Rengine::ECS::size_type(en) << "\n";
         };
     */
-    Lib::Singleton<Rengine::ECS>::getInstance().setOnEntityCreationFunction(onCreateFun);
+    //Lib::Singleton<Rengine::ECS>::getInstance().setOnEntityCreationFunction(onCreateFun);
     //Lib::Singleton<Rengine::ECS>::getInstance().setOnEntityRemovalFunction(onDestroyFun);
 }
 
@@ -59,7 +62,6 @@ void initWindow()
 
 void handleInput(void)
 {
-    Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->pollInput();
     auto &manager = Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->getInputManager();
 
     for (auto& it : manager) {
@@ -102,8 +104,10 @@ int main(int ac, char * const *argv)
     Engine::World world = Engine::World(argv[1]);
 
     while (Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->isOpen()) {
+        Rengine::Graphics::GraphicManagerSingletone::get().getWindow()->pollInput();
         // Component function
         Lib::Singleton<Rengine::ECS>::getInstance().runComponentFunction<Components::Hitbox>();
+        Lib::Singleton<Rengine::ECS>::getInstance().runComponentFunction<Components::Playable>();
 
         // Render
         world.applyGravityToEntities();

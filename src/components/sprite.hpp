@@ -2,6 +2,7 @@
 #ifndef COMPONENTS_SPRITE_HPP
     #define COMPONENTS_SPRITE_HPP
 
+#include "src/components/hitbox.hpp"
 #include "src/components/position.hpp"
 #include <rengine/src/Graphics/Vector.hpp>
 #include <string>
@@ -13,11 +14,15 @@ namespace Components {
     class Sprite {
         public:
             Sprite() = default;  // default constructor for sparse_array
-            Sprite(const std::string& texturePath)
+            Sprite(const std::string& texturePath, const std::optional<Components::HitboxData>& hitboxData)
             {
                 Rengine::Graphics::SpriteSpecs specs;
 
                 specs.texturePath = texturePath;
+                if (hitboxData != std::nullopt) {
+                    specs.originOffset.x = hitboxData->hitboxSize.x / 2;
+                    specs.originOffset.y = hitboxData->hitboxSize.y / 2;
+                }
                 this->_sprite = Rengine::Graphics::GraphicManagerSingletone::get().createSprite(specs);
             }
             ~Sprite() = default;

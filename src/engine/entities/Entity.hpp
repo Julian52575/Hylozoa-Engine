@@ -61,6 +61,11 @@ namespace Entities {
             {
                 Rengine::Entity en = Lib::Singleton<Rengine::ECS>::getInstance().addEntity();
 
+                Lib::Singleton<Engine::LoggingManager>::getInstance().logTime();
+                Lib::Singleton<Engine::LoggingManager>::getInstance()
+                    << "Created entity #" << en
+                    << " using configuration file '" << configPath << "'\n";
+
                 this->_id = en;
                 // default components
                 en.addComponent<Components::Position>(con.world_position[0], con.world_position[1]);
@@ -78,14 +83,15 @@ namespace Entities {
                         en.addComponent<Components::Vision>(con.vision_config);
                     } else if (currentName == "sprite") {
                         if (con.sprite.find("/") == true) {
-                            en.addComponent<Components::Sprite>(con.sprite);
+                            en.addComponent<Components::Sprite>(con.sprite, con.hitbox_specs);
                         } else {
                             auto configDirIdx = configPath.find_last_of('/');
 
                             if (configDirIdx == std::string::npos) {
-                                en.addComponent<Components::Sprite>(con.sprite);
+                                en.addComponent<Components::Sprite>(con.sprite, con.hitbox_specs);
                             } else {
-                                en.addComponent<Components::Sprite>(configPath.substr(0, configDirIdx + 1) + con.sprite);
+                                en.addComponent<Components::Sprite>(configPath.substr(0, configDirIdx + 1) + con.sprite,
+                                        con.hitbox_specs);
                             }
                         }
                     } else if (currentName == "hearing") {
