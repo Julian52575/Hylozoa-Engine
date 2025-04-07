@@ -1,7 +1,9 @@
 name: Mirroring to Epitech
 on:
   push:
-    branches: main
+    branches:
+      - main
+      - "*-release"
 
 env:
   ACTION_FILE: .github/workflows/epitech-mirroring.yml
