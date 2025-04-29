@@ -1,0 +1,9 @@
+*.o
+
+CMakeCache.txt
+bin/
+lib/
+cmake_install.cmake
+_deps
+CTestTestfile.cmake
+build/
