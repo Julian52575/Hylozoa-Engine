@@ -3,10 +3,10 @@ name: Engine unit tests
 on:
   push:
     branches:
-      - "game_engine-dev-*"
+      - "game-engine-dev-*"
   pull_request:
     branches:
-      - "game_engine-dev-*"
+      - "game-engine-dev-*"
 
 jobs:
   build-and-run:
