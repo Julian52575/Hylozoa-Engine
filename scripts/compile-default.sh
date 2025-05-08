@@ -12,21 +12,24 @@ then
     echo "Error: No 'CMakeLists.txt' on current directory: aborting..."
     exit 84
 fi
+if [[ ! -d "./build/" ]];
+then
+    echo "Error: No 'build/' directory."
+    exit 84
+fi
 
 #Arguments
 
 #Script
-cmake -G "Unix Makefiles" \
-    -DCMAKE_BUILD_TYPE=Debug \
-    -S=./
-    -B=build/ \
-    -DCMAKE_INSTALL_PREFIX=.
-
+cd build/
+cmake .. -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE=Debug
 if [[ $? -ne 0 ]];
 then
     echo "An error occured when building with cmake.."
     exit 84
 fi
+
 make
 if [[ $? -ne 0 ]];
 then
@@ -34,4 +37,5 @@ then
     exit 84
 fi
 
-echo "Success: check the build folder"
+echo -e "Success: check the build folder.\nClearning current path..."
+mv --verbose hylozoa.exe ..
