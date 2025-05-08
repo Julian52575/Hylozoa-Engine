@@ -9,6 +9,7 @@ pkgs.mkShellNoCC {
     lolcat
     clang
     valgrind
+    cmake
   ];
 
   # Env variables bellow
