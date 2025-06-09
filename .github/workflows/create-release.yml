@@ -5,6 +5,9 @@ on:
     branches:
       - "*-release"
 
+permissions:
+  contents: write
+
 env:
   PROJECT_FOLDER: test
   RELEASE_NAME: Release
@@ -29,7 +32,7 @@ jobs:
     steps:
       - name: create-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           tag: ${{ github.ref_name }}
         run: |
           gh release create "$tag" \
