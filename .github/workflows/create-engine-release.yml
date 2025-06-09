@@ -35,7 +35,7 @@ jobs:
           DATE: ${{ needs.get_date.outputs.date_abr }}
           tag: ${{ github.ref_name }}
         run: |
-          gh release create "$tag $DATE" \
+          gh release create "$tag-$DATE" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${RELEASE_NAME}" \
               --generate-notes
