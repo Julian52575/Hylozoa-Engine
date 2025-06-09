@@ -1,5 +1,6 @@
 name: "Create Release"
 on:
+  workflow_dispatch:
   push:
     branches:
       - "*-release"
@@ -28,13 +29,10 @@ jobs:
     steps:
       - name: create-release
         env:
-          VERSION: ${{ needs.get_date.outputs.date_abr }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        uses: actions/create-release@v1.1.4
-        with:
-          tag_name: ${{ env.VERSION }}
-          release_name: Release ${{ env.VERSION }}
-          body: |
-            Automatic release.
-          draft: false
-          prerelease: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
