@@ -3,20 +3,6 @@ description: Description of the newly added feature
 labels: [feature]
 
 body:
-  - type: dropdown
-    id: what-part-of-the-project
-    attributes:
-      label: for what part of the project
-      description: "For what part of the project this feature is"
-      multiple: true
-      options:
-        - Engine
-        - UI
-        - Dev env
-        - Documentation
-    validations:
-      required: true
-
   - type: input
     id: feature-title
     attributes:
