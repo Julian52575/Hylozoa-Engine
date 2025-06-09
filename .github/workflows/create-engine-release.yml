@@ -32,9 +32,10 @@ jobs:
       - name: create-release
         env:
           GH_TOKEN: ${{ github.token }}
+          DATE: ${{ needs.get_date.outputs.date_abr }}
           tag: ${{ github.ref_name }}
         run: |
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${RELEASE_NAME} ${needs.get_date.ouputs.date_abr}" \
+              --title="${GITHUB_REPOSITORY#*/} ${RELEASE_NAME} ${DATE}" \
               --generate-notes
