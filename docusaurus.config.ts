@@ -37,7 +37,7 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
         docs: {
           sidebarPath: './sidebars.ts',
@@ -82,14 +82,27 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/docs/intro',
+          label: 'Docs',
           position: 'left',
-          label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          to: '/tutorials/intro',
+          label: 'Tutorials',
+          position: 'left'
+        },
+        {
+          to: '/contributing/intro',
+          label: 'Contributing',
+          position: 'left'
+        },
+        {
+          to: '/blog',
+          label: 'Blog',
+          position: 'left'
+        },
+        {
+          href: 'https://github.com/Julian52575/Hylozoa-Engine',
           label: 'GitHub',
           position: 'right',
         },
@@ -99,12 +112,17 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Ressources',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Docs',
               to: '/docs/intro',
             },
+            {
+              label: 'Contributing',
+              to: '/contributing',
+            },
+
           ],
         },
         {
@@ -128,23 +146,33 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/Julian52575/Hylozoa-Engine',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Hylozoa Engine, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  /*
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tutorials',                // 👈 important, unique ID
+        path: 'tutorials',     // 👈 your folder
+        routeBasePath: 'tutorials',     // 👈 URL: /tutorials/...
+        sidebarPath: require.resolve('./sidebarsExtra.js'),
+      },
+    ],
+  ],
+  */
 };
 
 export default config;
