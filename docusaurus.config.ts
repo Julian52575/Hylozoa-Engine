@@ -25,7 +25,7 @@ const config: Config = {
   organizationName: 'julian52575', // Usually your GitHub org/user name.
   projectName: 'Hylozoa-Engine', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -81,6 +81,7 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        /*
         {
           to: '/docs/intro',
           label: 'Docs',
@@ -96,6 +97,7 @@ const config: Config = {
           label: 'Contributing',
           position: 'left'
         },
+        */
         {
           to: '/blog',
           label: 'Blog',
@@ -114,7 +116,7 @@ const config: Config = {
         {
           title: 'Ressources',
           items: [
-            {
+            /*{
               label: 'Docs',
               to: '/docs/intro',
             },
@@ -122,6 +124,7 @@ const config: Config = {
               label: 'Contributing',
               to: '/contributing',
             },
+            */
           ],
         },
         {
