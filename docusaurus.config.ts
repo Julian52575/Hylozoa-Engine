@@ -122,7 +122,6 @@ const config: Config = {
               label: 'Contributing',
               to: '/contributing',
             },
-
           ],
         },
         {
