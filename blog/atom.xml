@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://julian52575.github.io/Hylozoa-Engine/blog</id>
+    <title>Hylozoa Engine Blog</title>
+    <updated>2026-03-05T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://julian52575.github.io/Hylozoa-Engine/blog"/>
+    <subtitle>Hylozoa Engine Blog</subtitle>
+    <icon>https://julian52575.github.io/Hylozoa-Engine/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Mermaid for easy schemas]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/mermaid</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/mermaid"/>
+        <updated>2026-03-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Schemas configured as code]]></summary>
+        <content type="html"><![CDATA[<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="schemas-configured-as-code">Schemas configured as code<a href="https://julian52575.github.io/Hylozoa-Engine/blog/mermaid#schemas-configured-as-code" class="hash-link" aria-label="Direct link to Schemas configured as code" title="Direct link to Schemas configured as code" translate="no">​</a></h4>
+<p>As the saying goes, an image is worth a thousand words...<br>
+<!-- -->Whenever I tried to create schema before, I always had trouble keeping it up-to-date and had to drop it :(<br>
+<!-- -->But no longer thanks to Mermaid !</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-mermaid-">What is Mermaid ?<a href="https://julian52575.github.io/Hylozoa-Engine/blog/mermaid#what-is-mermaid-" class="hash-link" aria-label="Direct link to What is Mermaid ?" title="Direct link to What is Mermaid ?" translate="no">​</a></h3>
+<p>Mermaid is a language to create schmas.<br>
+<!-- -->No long are you stuck editing PNGs !</p>
+<p>You can access the online tool <a href="https://mermaid.ai/app/projects/6c38f33b-3b7d-40c4-ab9d-e647b98da993/diagrams/990549d1-222d-4321-b2b0-89609357d2f0/version/v0.1/edit?shouldShowPopup=true" target="_blank" rel="noopener noreferrer" class="">here</a>.
+And the project's GitHub <a href="https://github.com/mermaid-js/mermaid/blob/develop/README.md" target="_blank" rel="noopener noreferrer" class="">here</a>.</p>
+<p>What's even better, <code>mmd</code> <em>(mermaid markdown)</em> <strong>is supported in GitHub Readme !</strong></p>
+<h6 class="anchor anchorTargetStickyNavbar_Vzrq" id="its-unfortunatly-not-supported-by-docusaurus-">it's unfortunatly not supported by Docusaurus :(<a href="https://julian52575.github.io/Hylozoa-Engine/blog/mermaid#its-unfortunatly-not-supported-by-docusaurus-" class="hash-link" aria-label="Direct link to it's unfortunatly not supported by Docusaurus :(" title="Direct link to it's unfortunatly not supported by Docusaurus :(" translate="no">​</a></h6>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="example">Example<a href="https://julian52575.github.io/Hylozoa-Engine/blog/mermaid#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example" translate="no">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="Mermaid example" src="https://julian52575.github.io/Hylozoa-Engine/assets/images/Mermaid-example-94956245ce242ba0a2456b625b693542.svg" width="969" height="427" class="img_ev3q"></p>
+<p>And here is the associated code, that you can copy paste and easily edit!</p>
+<div class="language-mermaid.js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-mermaid.js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">---</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">config:</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  layout: elk</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  theme: mc</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  look: classic</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">---</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">classDiagram</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">direction LR</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	namespace HylozoaCompany2077 {</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        class Employee {</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +int employeeId</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +String position</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +double salary</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +work(hours: int) : void</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +requestLeave(days: int) : bool</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        class Report {</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +String title</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +Date generatedOn</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +String content</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +export(format: String) : bool</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        class Rulian {</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +String specialty</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +customMethod() : void</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        class Person:::someclass {</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        lol name</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +int age</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +String address</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +greet() : void</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	        +updateAddress(newAddress: String) : void</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	}</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Person --&gt; Employee</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Employee o.. "entrypoint" Report : draft</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Person &lt;-- Rulian</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	classDef someclass fill:#f9f,stroke:#333,stroke-width:4px;</span><br></div></code></pre></div></div>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+        <category label="Tools" term="Tools"/>
+        <category label="Non-Technical" term="Non-Technical"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building and Engaging a Technical Community]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/community-contributions</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/community-contributions"/>
+        <updated>2025-03-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We designed our project as an open and collaborative platform.]]></summary>
+        <content type="html"><![CDATA[<p>We designed our project as an <strong>open and collaborative platform</strong>.</p>
+<hr>
+<h1>📜 License</h1>
+<p>Chosen license: <strong>[MIT / GPL / Apache]</strong></p>
+<p>Why:</p>
+<ul>
+<li class="">...</li>
+<li class="">...</li>
+</ul>
+<hr>
+<h1>📢 Contribution Calls</h1>
+<p>Actions taken:</p>
+<ul>
+<li class="">Created issues</li>
+<li class="">Posted on forums / Discord</li>
+<li class="">Presented the project</li>
+</ul>
+<hr>
+<h1>🤝 Contributions Received</h1>
+<ul>
+<li class="">Pull requests: [...]</li>
+<li class="">Feedback: [...]</li>
+<li class="">Bug reports: [...]</li>
+</ul>
+<p>Impact:</p>
+<ul>
+<li class="">Code improvements</li>
+<li class="">New ideas</li>
+</ul>
+<hr>
+<h1>📚 Contributor Documentation</h1>
+<p>Files:</p>
+<ul>
+<li class=""><code>README.md</code></li>
+<li class=""><code>CONTRIBUTING.md</code></li>
+</ul>
+<p>Includes:</p>
+<ul>
+<li class="">Setup instructions</li>
+<li class="">Contribution guidelines</li>
+<li class="">Coding standards</li>
+</ul>
+<hr>
+<h1>🏆 Recognition</h1>
+<ul>
+<li class="">Contributors list</li>
+<li class="">Mentions</li>
+<li class="">Acknowledgments</li>
+</ul>
+<hr>
+<h1>📦 Deliverables</h1>
+<ul>
+<li class="">Public repository</li>
+<li class="">Issues / PR history</li>
+<li class="">Community interactions</li>
+</ul>
+<hr>
+<h1>❌ What is not enough</h1>
+<ul>
+<li class="">Public repo without docs</li>
+<li class="">No interaction</li>
+<li class="">Ignoring feedback</li>
+</ul>
+<hr>
+<h1>🧠 Conclusion</h1>
+<p>Community involvement makes the project <strong>stronger and more sustainable</strong>.</p>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+        <category label="Epitech Innovative Project" term="Epitech Innovative Project"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Measuring and Optimizing Technical Performance]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization"/>
+        <updated>2025-03-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We track:]]></summary>
+        <content type="html"><![CDATA[<p>We track:</p>
+<ul>
+<li class="">Response time</li>
+<li class="">CPU / memory usage</li>
+<li class="">Latency</li>
+</ul>
+<hr>
+<h1>🧪 Testing</h1>
+<p>Types:</p>
+<ul>
+<li class="">Stress testing</li>
+<li class="">Load testing</li>
+<li class="">Resilience testing</li>
+</ul>
+<p>Tools:</p>
+<ul>
+<li class="">[k6 / JMeter / custom scripts]</li>
+</ul>
+<hr>
+<h1>📊 Results</h1>
+<table><thead><tr><th>Version</th><th>Response Time</th><th>CPU</th><th>Memory</th></tr></thead><tbody><tr><td>Before</td><td>...</td><td>...</td><td>...</td></tr><tr><td>After</td><td>...</td><td>...</td><td>...</td></tr></tbody></table>
+<hr>
+<h1>🔍 Analysis</h1>
+<p>Identified issues:</p>
+<ul>
+<li class="">Bottlenecks</li>
+<li class="">Slow queries</li>
+<li class="">Memory inefficiencies</li>
+</ul>
+<hr>
+<h1>⚙️ Optimizations</h1>
+<ul>
+<li class="">Added caching</li>
+<li class="">Optimized queries</li>
+<li class="">Refactored code</li>
+</ul>
+<hr>
+<h1>⚖️ Trade-offs</h1>
+<ul>
+<li class="">Performance vs complexity</li>
+<li class="">Cost vs benefit</li>
+</ul>
+<hr>
+<h1>📈 Impact</h1>
+<ul>
+<li class="">% improvement</li>
+<li class="">Stability gains</li>
+<li class="">Scalability improvements</li>
+</ul>
+<hr>
+<h1>📦 Deliverables</h1>
+<ul>
+<li class="">Logs</li>
+<li class="">Graphs</li>
+<li class="">Test scripts</li>
+<li class="">Monitoring dashboards</li>
+</ul>
+<hr>
+<h1>❌ What is not enough</h1>
+<ul>
+<li class="">No metrics</li>
+<li class="">Guess-based optimization</li>
+<li class="">No documentation</li>
+</ul>
+<hr>
+<h1>🧠 Conclusion</h1>
+<p>Measure → analyze → optimize = <strong>controlled performance</strong>.</p>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+        <category label="Epitech Innovative Project" term="Epitech Innovative Project"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Structuring and Securing the Technical Architecture]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/technical-architecture</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/technical-architecture"/>
+        <updated>2025-03-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Our architecture consists of:]]></summary>
+        <content type="html"><![CDATA[<p>Our architecture consists of:</p>
+<ul>
+<li class="">Frontend: [...]</li>
+<li class="">Backend: [...]</li>
+<li class="">Database: [...]</li>
+<li class="">Deployment: [...]</li>
+</ul>
+<hr>
+<h1>📊 Diagram</h1>
+<hr>
+<h1>🧠 Technical Choices</h1>
+<p>Why we chose:</p>
+<ul>
+<li class="">Framework: [...]</li>
+<li class="">Database: [...]</li>
+<li class="">Code structure: [...]</li>
+</ul>
+<p>👉 Every choice is justified.</p>
+<hr>
+<h1>📚 Documentation</h1>
+<p>README includes:</p>
+<ul>
+<li class="">Installation</li>
+<li class="">Commands</li>
+<li class="">Environment variables</li>
+<li class="">Project structure</li>
+</ul>
+<p>Advanced docs:</p>
+<ul>
+<li class="">Architecture diagrams</li>
+<li class="">Use cases</li>
+<li class="">Technical roadmap</li>
+</ul>
+<hr>
+<h1>🛡️ Quality &amp; Security</h1>
+<ul>
+<li class="">
+<p>Linting: ESLint / Pylint</p>
+</li>
+<li class="">
+<p>Tests:</p>
+<ul>
+<li class="">Unit tests</li>
+<li class="">Validation tests</li>
+</ul>
+</li>
+<li class="">
+<p>Security:</p>
+<ul>
+<li class="">Authentication</li>
+<li class="">Logging</li>
+<li class="">Error handling</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>⚙️ Reliability</h1>
+<ul>
+<li class="">CI/CD: [...]</li>
+<li class="">Monitoring: [...]</li>
+<li class="">Error handling strategy</li>
+</ul>
+<hr>
+<h1>📦 Deliverables</h1>
+<ul>
+<li class="">Complete README</li>
+<li class="">Diagrams</li>
+<li class="">Test results</li>
+<li class="">Deployment scripts</li>
+</ul>
+<hr>
+<h1>❌ What is not enough</h1>
+<ul>
+<li class="">Missing README</li>
+<li class="">Monolithic code</li>
+<li class="">No tests</li>
+<li class="">Unjustified choices</li>
+</ul>
+<hr>
+<h1>🧠 Conclusion</h1>
+<p>A clear architecture makes the project <strong>scalable, maintainable, and professional</strong>.</p>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+        <category label="Epitech Innovative Project" term="Epitech Innovative Project"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Evaluating and Integrating New Technologies]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/tech-watch</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/tech-watch"/>
+        <updated>2025-03-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In this post, we describe our technology watch process and how we evaluated and integrated new solutions into our project.]]></summary>
+        <content type="html"><![CDATA[<p>In this post, we describe our <strong>technology watch process</strong> and how we evaluated and integrated new solutions into our project.</p>
+<hr>
+<h1>🧠 Active Technology Watch</h1>
+<ul>
+<li class="">
+<p>Sources:</p>
+<ul>
+<li class="">Technical blogs</li>
+<li class="">Official documentation</li>
+<li class="">GitHub / newsletters / forums</li>
+</ul>
+</li>
+<li class="">
+<p>Technologies explored:</p>
+<ul>
+<li class="">[Tech 1]</li>
+<li class="">[Tech 2]</li>
+<li class="">[Tech 3]</li>
+</ul>
+</li>
+</ul>
+<p>👉 Goal: identify <strong>relevant solutions</strong>, not just trending ones.</p>
+<hr>
+<h1>⚖️ Analysis &amp; Comparison</h1>
+<table><thead><tr><th>Technology</th><th>Pros</th><th>Cons</th><th>Decision</th></tr></thead><tbody><tr><td>X</td><td>...</td><td>...</td><td>...</td></tr><tr><td>Y</td><td>...</td><td>...</td><td>...</td></tr></tbody></table>
+<p>📊 Benchmarks:</p>
+<ul>
+<li class="">Performance</li>
+<li class="">Scalability</li>
+<li class="">Maintainability</li>
+</ul>
+<hr>
+<h1>🧪 Experiments (POC)</h1>
+<ul>
+<li class="">POC 1: [description + repo]</li>
+<li class="">POC 2: [description]</li>
+</ul>
+<p>Results:</p>
+<ul>
+<li class="">✔️ What worked</li>
+<li class="">❌ Limitations</li>
+</ul>
+<hr>
+<h1>🔧 Integration</h1>
+<ul>
+<li class="">
+<p>Selected technology: <strong>[name]</strong></p>
+</li>
+<li class="">
+<p>Why:</p>
+<ul>
+<li class="">...</li>
+<li class="">...</li>
+</ul>
+</li>
+<li class="">
+<p>Impact:</p>
+<ul>
+<li class="">Performance</li>
+<li class="">Developer experience</li>
+<li class="">Maintainability</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>🌍 Community &amp; Sharing</h1>
+<ul>
+<li class="">Discussions: [Discord / forums]</li>
+<li class="">Contributions: [issues, PRs]</li>
+</ul>
+<hr>
+<h1>📦 Deliverables</h1>
+<ul>
+<li class="">Research notes</li>
+<li class="">Benchmarks</li>
+<li class="">POCs</li>
+<li class="">Updated documentation</li>
+</ul>
+<hr>
+<h1>❌ What is not enough</h1>
+<ul>
+<li class="">Following trends blindly</li>
+<li class="">No testing</li>
+<li class="">No documentation</li>
+</ul>
+<hr>
+<h1>🧠 Conclusion</h1>
+<p>This process led to an <strong>informed technical decision</strong> and measurable improvements.</p>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+        <category label="Epitech Innovative Project" term="Epitech Innovative Project"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Important tags for easy browsing]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/maintags</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/maintags"/>
+        <updated>1900-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Important tags]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="important-tags">Important tags<a href="https://julian52575.github.io/Hylozoa-Engine/blog/maintags#important-tags" class="hash-link" aria-label="Direct link to Important tags" title="Direct link to Important tags" translate="no">​</a></h2>
+<table><thead><tr><th>Tag</th><th>Description</th></tr></thead><tbody><tr><td><a class="" href="https://julian52575.github.io/Hylozoa-Engine/blog/tags/eip">Epitech Inovative Project</a></td><td>Posts related to validating our graduation project.</td></tr><tr><td><a class="" href="https://julian52575.github.io/Hylozoa-Engine/blog/tags/technical">Technical</a></td><td>In-depth aspects of programming.</td></tr><tr><td><a class="" href="https://julian52575.github.io/Hylozoa-Engine/blog/tags/non-technical">Non-technical</a></td><td>Non technical aspects of programming.</td></tr><tr><td><a class="" href="https://julian52575.github.io/Hylozoa-Engine/blog/tags/tools">Tools</a></td><td>Tools to know to ease development</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="all-tags">All tags<a href="https://julian52575.github.io/Hylozoa-Engine/blog/maintags#all-tags" class="hash-link" aria-label="Direct link to All tags" title="Direct link to All tags" translate="no">​</a></h2>
+<p>See the auto generated page containing all tags <a class="" href="https://julian52575.github.io/Hylozoa-Engine/blog/tags">here</a>.</p>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Blog Template]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/template</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/template"/>
+        <updated>1900-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Here is a template to follow]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="here-is-a-template-to-follow">Here is a template to follow<a href="https://julian52575.github.io/Hylozoa-Engine/blog/template#here-is-a-template-to-follow" class="hash-link" aria-label="Direct link to Here is a template to follow" title="Direct link to Here is a template to follow" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-this-is-about">What this is about<a href="https://julian52575.github.io/Hylozoa-Engine/blog/template#what-this-is-about" class="hash-link" aria-label="Direct link to What this is about" title="Direct link to What this is about" translate="no">​</a></h3>
+<p>Lorum ipseum, ...</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-impacts-does-it-have-">What impacts does it have ?<a href="https://julian52575.github.io/Hylozoa-Engine/blog/template#what-impacts-does-it-have-" class="hash-link" aria-label="Direct link to What impacts does it have ?" title="Direct link to What impacts does it have ?" translate="no">​</a></h3>
+<p>Lorum ipseum, ...</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tldr">TLDR<a href="https://julian52575.github.io/Hylozoa-Engine/blog/template#tldr" class="hash-link" aria-label="Direct link to TLDR" title="Direct link to TLDR" translate="no">​</a></h3>
+<p>Copy paste that template and focus on teaching your stuff</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="image">Image<a href="https://julian52575.github.io/Hylozoa-Engine/blog/template#image" class="hash-link" aria-label="Direct link to Image" title="Direct link to Image" translate="no">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://julian52575.github.io/Hylozoa-Engine/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>]]></content>
+    </entry>
+</feed>
