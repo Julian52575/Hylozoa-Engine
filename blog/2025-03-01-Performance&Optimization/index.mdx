@@ -5,89 +5,134 @@ authors: [julian]
 tags: [eip]
 ---
 
+#### Find here our plan regarding Hylozoa's testing and optimizing goals.    
+
 # 📏 Metrics
 
-We track:
+#### Our current goal is to track the following 3 metrics:
 
-- Response time
-- CPU / memory usage
-- Latency
+## Memory usage
+
+The following sub-metrics will be tracked  
+
+- Current Memory
+- Peak Memory
+- Memory Budget
+- Allocation count
+
+in 4 scenes:
+
+- Empty scene.
+- Beach demo scene.
+- A Stress scene that is overloaded with entities.
+- A streming scene that is constantly loading and unloading entities.
+
+For a duration of 10 seconds.
+
+CI will fail is a commit introduce an unjustified spike in any of these metrics.
+
+## CPU Usage
+
+We will track these sub-metrics:
+
+- Frame Time
+    - Average
+    - P95
+    - P99
+- Thread Time
+
+By including the professional level tool Tracy Profiler into the Hylozoa source code. 
+We will then integrate Intel VTune at a later date deeper profiling.
+
+## CPU miscache
+
+We will first track these sub-metrics:
+- L1
+- L2
+- LLC/L3
+
+Using `perf stat -d hylozoa`.
+This metric too will be improved by the Intel VTune integration.
 
 ---
 
-# 🧪 Testing
+# 🧪 Testing tools
 
-Types:
+#### A project of this scale requires great testing, the following tests runs on our project:
 
-- Stress testing
-- Load testing
-- Resilience testing
+## Google tests  
+Used for Unit testing.
 
-Tools:
+## Google benchmark
+Used for benchmarking certains scenarios.
 
-- [k6 / JMeter / custom scripts]
+## GNU Time
 
----
+Note: we are talking about `/usr/bin/time` and not the shell built-in `time`.   
 
-# 📊 Results
+A GNU utility tool that display basics stats.
+```
+        Command being timed: "./hylozoa_engine_main"
+        User time (seconds): 9.47
+        System time (seconds): 1.01
+        Percent of CPU this job got: 320%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.27
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 141540
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 1207
+        Minor (reclaiming a frame) page faults: 18592
+        Voluntary context switches: 50912
+        Involuntary context switches: 66
+        Swaps: 0
+        File system inputs: 212576
+        File system outputs: 96
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
+###### An example on the early beach demo scene
 
-| Version | Response Time | CPU | Memory |
-|--------|--------------|-----|--------|
-| Before | ... | ... | ... |
-| After | ... | ... | ... |
 
----
+## Tracy Profiler 
 
-# 🔍 Analysis
+"Tracy is a live profiler for C++ applications that shows frame timings,
+thread activity, memory allocations, and CPU hotspots in real time.
+It combines manually instrumented zones with statistical sampling to provide both precise timing information and broader performance analysis."
+###### ChatGPT when asked to explain the [Tracy Profiler's github readme](https://github.com/wolfpld/tracy) tagline
 
-Identified issues:
+It offers access to many profiler features by simply including the library and using keywords unto existing code.
+These features include:
+- Thread Visualization
+- GPU Profiling
+- Memory Tracking
+- Frame Analysis
 
-- Bottlenecks
-- Slow queries
-- Memory inefficiencies
+It is very effective in CI tests.
+
+It is a high level tools that works best when paired with lower level tools such as:
+
+## Intel VTune
+
+Intel VTune is a low level CPU & GPU performance analysis tool.
+It's main purpose is to investigate and understand performance issues.
+
+It profiles:
+- Cache misses
+- Branch prediction
+- Pipeline stalls
+
+It would not be used directly in CI pipeline. 
 
 ---
 
 # ⚙️ Optimizations
 
-- Added caching
-- Optimized queries
-- Refactored code
+#### The following optimization were done to the project:
 
----
-
-# ⚖️ Trade-offs
-
-- Performance vs complexity
-- Cost vs benefit
-
----
-
-# 📈 Impact
-
-- % improvement
-- Stability gains
-- Scalability improvements
-
----
-
-# 📦 Deliverables
-
-- Logs
-- Graphs
-- Test scripts
-- Monitoring dashboards
-
----
-
-# ❌ What is not enough
-
-- No metrics
-- Guess-based optimization
-- No documentation
-
----
-
-# 🧠 Conclusion
-
-Measure → analyze → optimize = **controlled performance**.
+To be updated alonside completion of the project
