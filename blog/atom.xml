@@ -2,11 +2,110 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://julian52575.github.io/Hylozoa-Engine/blog</id>
     <title>Hylozoa Engine Blog</title>
-    <updated>2026-03-05T00:00:00.000Z</updated>
+    <updated>2026-06-03T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://julian52575.github.io/Hylozoa-Engine/blog"/>
     <subtitle>Hylozoa Engine Blog</subtitle>
     <icon>https://julian52575.github.io/Hylozoa-Engine/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[From Engine to Hylozoa Engine]]></title>
+        <id>https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa</id>
+        <link href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa"/>
+        <updated>2026-06-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The project has been ongoing since since March 2025, let's review its current state together:]]></summary>
+        <content type="html"><![CDATA[<p>The project has been ongoing since since March 2025, let's review its current state together:</p>
+<p><img decoding="async" loading="lazy" alt="Beach demo scene" src="https://julian52575.github.io/Hylozoa-Engine/assets/images/DemoBeach-a50bfa432c9e368d6502a19acbe620a3.gif" width="1919" height="1113" class="img_ev3q"></p>
+<h6 class="anchor anchorTargetStickyNavbar_Vzrq" id="runs-smoother-outside-of-a-gif"><em>runs smoother outside of a gif</em><a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#runs-smoother-outside-of-a-gif" class="hash-link" aria-label="Direct link to runs-smoother-outside-of-a-gif" title="Direct link to runs-smoother-outside-of-a-gif" translate="no">​</a></h6>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview">Overview<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h2>
+<p>Hylozoa-Engine runs on a ECS and currently supports the following components</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="featurescomponents">Features/Components<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#featurescomponents" class="hash-link" aria-label="Direct link to Features/Components" title="Direct link to Features/Components" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prefabs">Prefabs<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#prefabs" class="hash-link" aria-label="Direct link to Prefabs" title="Direct link to Prefabs" translate="no">​</a></h2>
+<p>Users can save an entity config as a .json to instanciate it whenever they need.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="lua-scripting">Lua scripting<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#lua-scripting" class="hash-link" aria-label="Direct link to Lua scripting" title="Direct link to Lua scripting" translate="no">​</a></h2>
+<p>Users can write lua scripts to control their entity.<br>
+<!-- -->The following methods are currently exposed:</p>
+<ul>
+<li class=""><code>instanciate()</code> to instanciate an entity from a prefab</li>
+<li class=""><code>destroy()</code> to destroy an entity</li>
+<li class=""><code>get_transform()</code> to get the transform of an entity</li>
+<li class=""><code>is_key_pressed()</code> to check if the user pressed a key</li>
+</ul>
+<p>The standard <code>math</code> library is also exposed.<br>
+<!-- -->And the following entrypoint is read from the script by the game engine:</p>
+<ul>
+<li class=""><code>onUpdate(entity, deltatime)</code> logic to run every frame</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="planned-improvements">Planned improvements<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#planned-improvements" class="hash-link" aria-label="Direct link to Planned improvements" title="Direct link to Planned improvements" translate="no">​</a></h3>
+<ul>
+<li class="">A way to communication between entities' scripts to coordinate them</li>
+<li class="">Lua entrypoint for the following events:<!-- -->
+<ul>
+<li class="">Collision detection</li>
+<li class="">Entity emotion change</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="renderable">Renderable<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#renderable" class="hash-link" aria-label="Direct link to Renderable" title="Direct link to Renderable" translate="no">​</a></h2>
+<p>Entity can have a sprite or a colored shape attached to them.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="planned-improvements-1">Planned improvements<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#planned-improvements-1" class="hash-link" aria-label="Direct link to Planned improvements" title="Direct link to Planned improvements" translate="no">​</a></h3>
+<p>The entity's sprite will be animated.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="physics-simulation">Physics simulation<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#physics-simulation" class="hash-link" aria-label="Direct link to Physics simulation" title="Direct link to Physics simulation" translate="no">​</a></h2>
+<p>Entities with a RigidBody will be affected by gravity and collides with other collider components.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="noise-listener">Noise listener<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#noise-listener" class="hash-link" aria-label="Direct link to Noise listener" title="Direct link to Noise listener" translate="no">​</a></h2>
+<p>Entity <em>(even the camera)</em> will hear the noises comming from the scene depending on the distance from the source.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="from-engine-to-hylozoa-engine">From Engine to Hylozoa Engine<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#from-engine-to-hylozoa-engine" class="hash-link" aria-label="Direct link to From Engine to Hylozoa Engine" title="Direct link to From Engine to Hylozoa Engine" translate="no">​</a></h2>
+<p>Hylozoa Engine has a solid foundation, but it lacks any features that helps to build complex ecosystems.</p>
+<p>Therefore, the following updates are planned for the comming year:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="prefab-parenting">Prefab parenting<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#prefab-parenting" class="hash-link" aria-label="Direct link to Prefab parenting" title="Direct link to Prefab parenting" translate="no">​</a></h3>
+<p>Following evolution, species have inherited traits from their parent species.<br>
+<!-- -->As such, using prefabs parenting would allow the users to mimic this aspect of evolution.</p>
+<p>Example:<br>
+<code>Ape</code>
+|
+<code>Monkey</code>
+|-&gt;    <code>Jungle Monkey</code><br>
+<!-- -->|-&gt;    <code>Beach Monkey</code></p>
+<p>AND <code>Crab</code> -&gt; <code>Beach Monkey</code></p>
+<p><code>BeachMonkey.prefab.json</code>:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"prefab"</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"parents"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token string" style="color:#e3116c">"Monkey"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token string" style="color:#e3116c">"Crab"</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"components"</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> ...</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Such that (<code>Ape</code> &lt; <code>Monkey</code> &lt; <code>Crab</code>) + beach monkey fields == <code>Beach Monkey</code>.</p>
+<p>Proposal:<br>
+<!-- -->We simply add a <code>prefab.parent</code> field to the prefab's json.<br>
+<!-- -->We then construct the child's prefab by parsing every parent and overwriting over the previous parent's fields.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="senses-components">Senses components<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#senses-components" class="hash-link" aria-label="Direct link to Senses components" title="Direct link to Senses components" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="view">View<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#view" class="hash-link" aria-label="Direct link to View" title="Direct link to View" translate="no">​</a></h4>
+<p>We don't support vision yet.<br>
+<!-- -->This will be done using simple raycasts.<br>
+<!-- -->The following methods will be provided to scripts:</p>
+<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">OnSightEnter(); -- 1st frame</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">OnSightLeave(); -- 1st frame of not seeing after being seen</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">OnSight(); -- All other frames</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="scripting">Scripting<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#scripting" class="hash-link" aria-label="Direct link to Scripting" title="Direct link to Scripting" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="listing-surrounding-entities">Listing surrounding entities<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#listing-surrounding-entities" class="hash-link" aria-label="Direct link to Listing surrounding entities" title="Direct link to Listing surrounding entities" translate="no">​</a></h4>
+<p>Example: an entity should know how many friend or foe surrounds it to make fight-or-flight decision.</p>
+<p>Proposal: <code>PerceptionMemory</code> component</p>
+<p>The <code>PerceptionMemory</code> component make use of all senses that are attached to the entity as components (hear, see, smell).
+Internally, it will store every entity perceived and their time of perception whenever the senses triggers.<br>
+<!-- -->The method <code>get_perception-list() : {entity}</code> will be available to retrieve a list of entity perceived in the last <code>memoryTime</code> seconds.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ground-rework">Ground rework<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#ground-rework" class="hash-link" aria-label="Direct link to Ground rework" title="Direct link to Ground rework" translate="no">​</a></h3>
+<p>Currently, creating ground is a bit of a hassle.</p>
+<p>Proposal: Constructing terrain from a .svg.<br>
+<!-- -->That method has already proven itself in games such as Super Mario Wonder.<br>
+<!-- -->This would be stored in the scene's configuration and not as an entity.
+Colors can be configured to act as different materials (dirt, sand, water, ...).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="default-assetsprefabs">Default assets/prefabs<a href="https://julian52575.github.io/Hylozoa-Engine/blog/road-to-hylozoa#default-assetsprefabs" class="hash-link" aria-label="Direct link to Default assets/prefabs" title="Direct link to Default assets/prefabs" translate="no">​</a></h3>
+<p>To ease the user experience, default prefabs should be included.</p>
+<p>Proposal:</p>
+<ul>
+<li class="">Default hylozoa mascot entity with all perception components active.</li>
+<li class="">Default random man that is player controlled.</li>
+<li class="">A pixar like funny ball to show physics.</li>
+<li class="">Some default ground (might be scene config or prefab).</li>
+</ul>]]></content>
+        <author>
+            <name>Julian</name>
+            <uri>https://github.com/julian52575</uri>
+        </author>
+        <category label="Epitech Innovative Project" term="Epitech Innovative Project"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mermaid for easy schemas]]></title>
         <id>https://julian52575.github.io/Hylozoa-Engine/blog/mermaid</id>
@@ -118,74 +217,91 @@ And the project's GitHub <a href="https://github.com/mermaid-js/mermaid/blob/dev
         <id>https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization</id>
         <link href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization"/>
         <updated>2025-03-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[We track:]]></summary>
-        <content type="html"><![CDATA[<p>We track:</p>
+        <summary type="html"><![CDATA[Find here our plan regarding Hylozoa's testing and optimizing goals.]]></summary>
+        <content type="html"><![CDATA[<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="find-here-our-plan-regarding-hylozoas-testing-and-optimizing-goals">Find here our plan regarding Hylozoa's testing and optimizing goals.<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#find-here-our-plan-regarding-hylozoas-testing-and-optimizing-goals" class="hash-link" aria-label="Direct link to Find here our plan regarding Hylozoa's testing and optimizing goals." title="Direct link to Find here our plan regarding Hylozoa's testing and optimizing goals." translate="no">​</a></h4>
+<h1>📏 Metrics</h1>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="our-current-goal-is-to-track-the-following-3-metrics">Our current goal is to track the following 3 metrics:<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#our-current-goal-is-to-track-the-following-3-metrics" class="hash-link" aria-label="Direct link to Our current goal is to track the following 3 metrics:" title="Direct link to Our current goal is to track the following 3 metrics:" translate="no">​</a></h4>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="memory-usage">Memory usage<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#memory-usage" class="hash-link" aria-label="Direct link to Memory usage" title="Direct link to Memory usage" translate="no">​</a></h2>
+<p>The following sub-metrics will be tracked</p>
 <ul>
-<li class="">Response time</li>
-<li class="">CPU / memory usage</li>
-<li class="">Latency</li>
+<li class="">Current Memory</li>
+<li class="">Peak Memory</li>
+<li class="">Memory Budget</li>
+<li class="">Allocation count</li>
 </ul>
+<p>in 4 scenes:</p>
+<ul>
+<li class="">Empty scene.</li>
+<li class="">Beach demo scene.</li>
+<li class="">A Stress scene that is overloaded with entities.</li>
+<li class="">A streming scene that is constantly loading and unloading entities.</li>
+</ul>
+<p>For a duration of 10 seconds.</p>
+<p>CI will fail is a commit introduce an unjustified spike in any of these metrics.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cpu-usage">CPU Usage<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#cpu-usage" class="hash-link" aria-label="Direct link to CPU Usage" title="Direct link to CPU Usage" translate="no">​</a></h2>
+<p>We will track these sub-metrics:</p>
+<ul>
+<li class="">Frame Time<!-- -->
+<ul>
+<li class="">Average</li>
+<li class="">P95</li>
+<li class="">P99</li>
+</ul>
+</li>
+<li class="">Thread Time</li>
+</ul>
+<p>By including the professional level tool Tracy Profiler into the Hylozoa source code.
+We will then integrate Intel VTune at a later date deeper profiling.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cpu-miscache">CPU miscache<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#cpu-miscache" class="hash-link" aria-label="Direct link to CPU miscache" title="Direct link to CPU miscache" translate="no">​</a></h2>
+<p>We will first track these sub-metrics:</p>
+<ul>
+<li class="">L1</li>
+<li class="">L2</li>
+<li class="">LLC/L3</li>
+</ul>
+<p>Using <code>perf stat -d hylozoa</code>.
+This metric too will be improved by the Intel VTune integration.</p>
 <hr>
-<h1>🧪 Testing</h1>
-<p>Types:</p>
+<h1>🧪 Testing tools</h1>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-project-of-this-scale-requires-great-testing-the-following-tests-runs-on-our-project">A project of this scale requires great testing, the following tests runs on our project:<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#a-project-of-this-scale-requires-great-testing-the-following-tests-runs-on-our-project" class="hash-link" aria-label="Direct link to A project of this scale requires great testing, the following tests runs on our project:" title="Direct link to A project of this scale requires great testing, the following tests runs on our project:" translate="no">​</a></h4>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="google-tests">Google tests<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#google-tests" class="hash-link" aria-label="Direct link to Google tests" title="Direct link to Google tests" translate="no">​</a></h2>
+<p>Used for Unit testing.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="google-benchmark">Google benchmark<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#google-benchmark" class="hash-link" aria-label="Direct link to Google benchmark" title="Direct link to Google benchmark" translate="no">​</a></h2>
+<p>Used for benchmarking certains scenarios.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="gnu-time">GNU Time<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#gnu-time" class="hash-link" aria-label="Direct link to GNU Time" title="Direct link to GNU Time" translate="no">​</a></h2>
+<p>Note: we are talking about <code>/usr/bin/time</code> and not the shell built-in <code>time</code>.</p>
+<p>A GNU utility tool that display basics stats.</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">        Command being timed: "./hylozoa_engine_main"</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        User time (seconds): 9.47</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        System time (seconds): 1.01</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Percent of CPU this job got: 320%</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.27</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Average shared text size (kbytes): 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Average unshared data size (kbytes): 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Average stack size (kbytes): 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Average total size (kbytes): 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Maximum resident set size (kbytes): 141540</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Average resident set size (kbytes): 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Major (requiring I/O) page faults: 1207</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Minor (reclaiming a frame) page faults: 18592</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Voluntary context switches: 50912</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Involuntary context switches: 66</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Swaps: 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        File system inputs: 212576</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        File system outputs: 96</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Socket messages sent: 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Socket messages received: 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Signals delivered: 0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Page size (bytes): 4096</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        Exit status: 0</span><br></div></code></pre></div></div>
+<h6 class="anchor anchorTargetStickyNavbar_Vzrq" id="an-example-on-the-early-beach-demo-scene">An example on the early beach demo scene<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#an-example-on-the-early-beach-demo-scene" class="hash-link" aria-label="Direct link to An example on the early beach demo scene" title="Direct link to An example on the early beach demo scene" translate="no">​</a></h6>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tracy-profiler">Tracy Profiler<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#tracy-profiler" class="hash-link" aria-label="Direct link to Tracy Profiler" title="Direct link to Tracy Profiler" translate="no">​</a></h2>
+<p>"Tracy is a live profiler for C++ applications that shows frame timings,
+thread activity, memory allocations, and CPU hotspots in real time.
+It combines manually instrumented zones with statistical sampling to provide both precise timing information and broader performance analysis."</p>
+<h6 class="anchor anchorTargetStickyNavbar_Vzrq" id="chatgpt-when-asked-to-explain-the-tracy-profilers-github-readme-tagline">ChatGPT when asked to explain the <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener noreferrer" class="">Tracy Profiler's github readme</a> tagline<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#chatgpt-when-asked-to-explain-the-tracy-profilers-github-readme-tagline" class="hash-link" aria-label="Direct link to chatgpt-when-asked-to-explain-the-tracy-profilers-github-readme-tagline" title="Direct link to chatgpt-when-asked-to-explain-the-tracy-profilers-github-readme-tagline" translate="no">​</a></h6>
+<p>It offers access to many profiler features by simply including the library and using keywords unto existing code.
+These features include:</p>
 <ul>
-<li class="">Stress testing</li>
-<li class="">Load testing</li>
-<li class="">Resilience testing</li>
+<li class="">Thread Visualization</li>
+<li class="">GPU Profiling</li>
+<li class="">Memory Tracking</li>
+<li class="">Frame Analysis</li>
 </ul>
-<p>Tools:</p>
+<p>It is very effective in CI tests.</p>
+<p>It is a high level tools that works best when paired with lower level tools such as:</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="intel-vtune">Intel VTune<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#intel-vtune" class="hash-link" aria-label="Direct link to Intel VTune" title="Direct link to Intel VTune" translate="no">​</a></h2>
+<p>Intel VTune is a low level CPU &amp; GPU performance analysis tool.
+It's main purpose is to investigate and understand performance issues.</p>
+<p>It profiles:</p>
 <ul>
-<li class="">[k6 / JMeter / custom scripts]</li>
+<li class="">Cache misses</li>
+<li class="">Branch prediction</li>
+<li class="">Pipeline stalls</li>
 </ul>
-<hr>
-<h1>📊 Results</h1>
-<table><thead><tr><th>Version</th><th>Response Time</th><th>CPU</th><th>Memory</th></tr></thead><tbody><tr><td>Before</td><td>...</td><td>...</td><td>...</td></tr><tr><td>After</td><td>...</td><td>...</td><td>...</td></tr></tbody></table>
-<hr>
-<h1>🔍 Analysis</h1>
-<p>Identified issues:</p>
-<ul>
-<li class="">Bottlenecks</li>
-<li class="">Slow queries</li>
-<li class="">Memory inefficiencies</li>
-</ul>
+<p>It would not be used directly in CI pipeline.</p>
 <hr>
 <h1>⚙️ Optimizations</h1>
-<ul>
-<li class="">Added caching</li>
-<li class="">Optimized queries</li>
-<li class="">Refactored code</li>
-</ul>
-<hr>
-<h1>⚖️ Trade-offs</h1>
-<ul>
-<li class="">Performance vs complexity</li>
-<li class="">Cost vs benefit</li>
-</ul>
-<hr>
-<h1>📈 Impact</h1>
-<ul>
-<li class="">% improvement</li>
-<li class="">Stability gains</li>
-<li class="">Scalability improvements</li>
-</ul>
-<hr>
-<h1>📦 Deliverables</h1>
-<ul>
-<li class="">Logs</li>
-<li class="">Graphs</li>
-<li class="">Test scripts</li>
-<li class="">Monitoring dashboards</li>
-</ul>
-<hr>
-<h1>❌ What is not enough</h1>
-<ul>
-<li class="">No metrics</li>
-<li class="">Guess-based optimization</li>
-<li class="">No documentation</li>
-</ul>
-<hr>
-<h1>🧠 Conclusion</h1>
-<p>Measure → analyze → optimize = <strong>controlled performance</strong>.</p>]]></content>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-following-optimization-were-done-to-the-project">The following optimization were done to the project:<a href="https://julian52575.github.io/Hylozoa-Engine/blog/performance-optimization#the-following-optimization-were-done-to-the-project" class="hash-link" aria-label="Direct link to The following optimization were done to the project:" title="Direct link to The following optimization were done to the project:" translate="no">​</a></h4>
+<p>To be updated alonside completion of the project</p>]]></content>
         <author>
             <name>Julian</name>
             <uri>https://github.com/julian52575</uri>
