@@ -1,5 +1,8 @@
 **This document is only valid in the state as it is on the `main` branch.**
 
+The hierarchy of commitment looks like this:
+Owners > Reviewers > Contributors > Users >>>>>>>>>>>>>>>>>>>>> AI Agents
+
 # Project Owners
 
 ## Description
@@ -27,10 +30,31 @@ We own the project.
 9. "Rent" project space to the contributors
   - Branches
   - Issues
+10. Accept or deny PRs
 
 ## People 
 
 ##### Julian [@Julian52575](https://github.com/Julian52575) - Sacha [@Sachet2Plastik](https://github.com/Sachet2Plastik) - Antoine [@Antoineweisse](https://github.com/Antoineweisse) - Raphael [@Raphael-v](https://github.com/Raphael-v)  
+
+---------
+# Reviewers
+
+## Description
+
+Community member that look at issues, branches, PRs and accept or deny them.  
+Do the first quality control.
+
+## Rights
+
+1. Be appreciated
+2. Inherits contributors' rights
+3. Open _(but not merge)_ pull requests
+4. Close issues and pull requests. A reason why must be provided.
+
+## Duties
+
+1. Inherits contributors' duties
+2. Sanitarize issues and pull requests
 
 -------
 # Contributors
@@ -53,9 +77,11 @@ Non-project owners who offer their free time and effort to help the project grow
 5. Commit code in rented branchs other than `main` and `dev`
 6. Fork any branch
 7. Fork the project
-8. Use AI as a working tool
-9. Be welcomed into the community's discussion spaces
-10. Stop contributing anytime 
+8. Comment issues or pull requests
+9. Request a Review
+10. Use AI as a tool
+11. Be welcomed into the community's discussion spaces
+12. Stop contributing anytime 
 
 ## Duties
 
@@ -63,8 +89,9 @@ Non-project owners who offer their free time and effort to help the project grow
 2. No bullying or NSFW
 3. Report bullying or other members misconduct
 4. Ensure the quality of contributions
-  - AI slop will not be accepted so make sure you are familiar with your work 
-5. Answer the project owners' community calls
+  - AI slop will not be accepted so make sure you are familiar with your work
+5. Work within an issue
+6. Answer the project owners' community calls
 
 -------
 # Users 
@@ -88,7 +115,7 @@ None. Complete freedom.
 
 ## Description
 
-AI powered agents that lives on their own and submit slop submissions.
+AI powered agents that act on their own and submit slop submissions.
 
 ## Rights
 
