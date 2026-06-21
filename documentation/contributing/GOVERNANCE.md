@@ -1,18 +1,26 @@
-**This document is only valid in the state as it is on the `main` branch.**
+> [!NOTE] 
+> **This document is only valid in the state it is on the latest commit of the `main` branch.**
 
-The hierarchy of commitment looks like this:
-Owners > Reviewers > Contributors > Users >>>>>>>>>>>>>>>>>>>>> AI Agents
+> [!IMPORTANT]
+> The hierarchy of commitment/roles looks like this:    
+> **Owners > Reviewers > Contributors > Supporters > Users**    
+> Read the rights/duties of each and become the one that best suits you.
+
+> [!TIP]
+> By being of a certain role, you inherit the duties and rights of the roles below _(IE: Reviewers inherits from Contributors AND Users...)_
 
 # Project Owners
 
 ## Description
 
 We built Hylozoa from the ground up and made it into what it is today.
-We own the project.
+We 4 are the main maintainers for now, but we might expand depending on the project's needs or individual commitment.  
 
 ## Rights
 
 1. Accept or deny any issues, PR or contributing in any kind
+2. Take actions against bad members of the community from timeout to exclusion
+3. Give or remove the role of owner to anyone 
 
 ## Duties
 
@@ -47,14 +55,12 @@ Do the first quality control.
 ## Rights
 
 1. Be appreciated
-2. Inherits contributors' rights
-3. Open _(but not merge)_ pull requests
-4. Close issues and pull requests. A reason why must be provided.
+2. Open _(but not merge)_ pull requests
+3. Close issues and pull requests. A reason why must be provided.
 
 ## Duties
 
-1. Inherits contributors' duties
-2. Sanitarize issues and pull requests
+1. Sanitarize issues and pull requests
 
 -------
 # Contributors
@@ -91,7 +97,23 @@ Non-project owners who offer their free time and effort to help the project grow
 4. Ensure the quality of contributions
   - AI slop will not be accepted so make sure you are familiar with your work
 5. Work within an issue
-6. Answer the project owners' community calls
+
+-------
+# Supporters
+
+## Description
+
+Individual interested in Hylozoa, without commiting to contributing on the source code.  
+Essentially, users who joined the Hylozoa discord.  
+
+## Rights
+
+1. Read-Only
+2. Stay away for the GitHub (except to download releases)
+
+## Duties
+
+1. Answers community calls
 
 -------
 # Users 
