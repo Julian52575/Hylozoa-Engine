@@ -1,0 +1,6 @@
+[submodule "engine"]
+	path = engine
+	url = git@github.com:Julian52575/Hylozoa-Engine-Engine.git
+[submodule "ui"]
+	path = ui
+	url = git@github.com:Julian52575/Hylozoa-Engine-Ui.git
