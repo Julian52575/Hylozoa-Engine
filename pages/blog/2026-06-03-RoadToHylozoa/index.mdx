@@ -1,0 +1,139 @@
+---
+slug: road-to-hylozoa
+title: From Engine to Hylozoa Engine
+authors: [julian]
+tags: [eip]
+---
+
+The project has been ongoing since since March 2025, let's review its current state together:
+
+![Beach demo scene](./DemoBeach.gif)
+###### _runs smoother outside of a gif_
+
+## Overview 
+
+Hylozoa-Engine runs on a ECS and currently supports the following components
+
+## Features/Components
+
+## Prefabs
+
+Users can save an entity config as a .json to instanciate it whenever they need.    
+
+## Lua scripting
+
+Users can write lua scripts to control their entity.    
+The following methods are currently exposed:    
+- `instanciate()` to instanciate an entity from a prefab
+- `destroy()` to destroy an entity
+- `get_transform()` to get the transform of an entity
+- `is_key_pressed()` to check if the user pressed a key
+
+The standard `math` library is also exposed.  
+And the following entrypoint is read from the script by the game engine:
+- `onUpdate(entity, deltatime)` logic to run every frame
+
+### Planned improvements 
+
+- A way to communication between entities' scripts to coordinate them
+- Lua entrypoint for the following events:
+    - Collision detection
+    - Entity emotion change
+
+## Renderable
+
+Entity can have a sprite or a colored shape attached to them. 
+
+### Planned improvements 
+
+The entity's sprite will be animated.
+
+## Physics simulation 
+
+Entities with a RigidBody will be affected by gravity and collides with other collider components.
+
+## Noise listener
+
+Entity _(even the camera)_ will hear the noises comming from the scene depending on the distance from the source.   
+
+## From Engine to Hylozoa Engine
+
+Hylozoa Engine has a solid foundation, but it lacks any features that helps to build complex ecosystems.   
+
+Therefore, the following updates are planned for the comming year:
+
+### Prefab parenting
+
+Following evolution, species have inherited traits from their parent species.   
+As such, using prefabs parenting would allow the users to mimic this aspect of evolution.   
+
+Example:    
+`Ape`
+|
+`Monkey`
+|->    `Jungle Monkey`  
+|->    `Beach Monkey`
+
+AND `Crab` -> `Beach Monkey`    
+
+`BeachMonkey.prefab.json`:
+``` json
+{
+    "prefab" : {
+        "parents": [
+            "Monkey",
+            "Crab"
+        ]
+    },
+    "components" : ...
+}
+```
+Such that (`Ape` < `Monkey` < `Crab`) + beach monkey fields == `Beach Monkey`.  
+
+Proposal:   
+We simply add a `prefab.parent` field to the prefab's json.   
+We then construct the child's prefab by parsing every parent and overwriting over the previous parent's fields.     
+
+### Senses components
+
+#### View
+
+We don't support vision yet.    
+This will be done using simple raycasts.    
+The following methods will be provided to scripts:  
+``` lua
+OnSightEnter(); -- 1st frame
+OnSightLeave(); -- 1st frame of not seeing after being seen
+OnSight(); -- All other frames
+```
+
+### Scripting
+
+#### Listing surrounding entities
+
+Example: an entity should know how many friend or foe surrounds it to make fight-or-flight decision.
+
+Proposal: `PerceptionMemory` component
+
+The `PerceptionMemory` component make use of all senses that are attached to the entity as components (hear, see, smell). 
+Internally, it will store every entity perceived and their time of perception whenever the senses triggers.  
+The method `get_perception-list() : {entity}` will be available to retrieve a list of entity perceived in the last `memoryTime` seconds.   
+
+### Ground rework
+
+Currently, creating ground is a bit of a hassle. 
+
+Proposal: Constructing terrain from a .svg.     
+That method has already proven itself in games such as Super Mario Wonder.  
+This would be stored in the scene's configuration and not as an entity. 
+Colors can be configured to act as different materials (dirt, sand, water, ...).    
+
+### Default assets/prefabs
+
+To ease the user experience, default prefabs should be included.    
+
+Proposal:
+- Default hylozoa mascot entity with all perception components active.
+- Default random man that is player controlled.
+- A pixar like funny ball to show physics.
+- Some default ground (might be scene config or prefab).

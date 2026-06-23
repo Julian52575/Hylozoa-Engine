@@ -1,0 +1,21 @@
+tools:
+  label: Tools
+  permalink: /tools
+  description: A collection of tools and utilities that can help you in your development workflow. 
+    From code editors to debugging tools. Essential resources for productivity and efficiency improvement.
+
+non-technical:
+  label: Non-Technical
+  permalink: /non-technical
+  description: Content that focuses on non-technical aspects of development, 
+    such as planning, project management, and overall soft skills...
+
+technical:
+  label: Technical
+  permalink: /technical
+  description: Content that focuses on in-depth aspects of programming.
+
+eip:
+  label: Epitech Innovative Project
+  permalink: /eip
+  description: (Related to Epitech school), Our graduation project and its requirements.

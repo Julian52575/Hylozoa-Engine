@@ -1,0 +1,18 @@
+# Dependencies
+pages/node_modules/
+# Production
+pages/build/
+# Generated files
+pages/.docusaurus
+pages/.cache-loader
+# Misc
+pages/.DS_Store
+pages/.env.local
+pages/.env.development.local
+pages/.env.test.local
+pages/.env.production.local
+pages/npm-debug.log*
+pages/yarn-debug.log*
+pages/yarn-error.log*
+# Claude chat zip
+*.zip
