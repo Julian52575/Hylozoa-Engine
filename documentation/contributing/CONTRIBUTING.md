@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 > A permanent link to the discord can be found here: https://discord.gg/VKtT5dTZZt  
-> The project's GOVERNANCE.md can be found [here](https://github.com/Julian52575/Hylozoa-Engine/blob/main/documentation/contributing/GOVERNANCE.md) and lists the different role you can take on !
+> The project's GOVERNANCE.md can be found [here](https://github.com/Julian52575/Hylozoa-Engine/blob/main/documentation/contributing/GOVERNANCE.md) and lists the different roles you can take on !
 
 # **Thank you for your interest in collaborating with the Hylozoa engine project !**
 
