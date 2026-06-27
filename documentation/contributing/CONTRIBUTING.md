@@ -40,8 +40,5 @@ flowchart LR
     classDef purple fill:#E1BEE7,stroke:#8E24AA,stroke-width:2px
     classDef grey fill:#2222,stroke:#110000,stroke-width:2px
 ```
-
-> [!TIP]
-> Your web-browser might cut-off the blocks.        
-> See the full schema here: https://mermaid.ai/d/b0d38ed0-7380-46ee-9834-fd2cf1bfd9ba
+<small> _Your web-browser might cut-off the longer blocks. See the full schema here: https://mermaid.ai/d/b0d38ed0-7380-46ee-9834-fd2cf1bfd9ba_ </small>
 
