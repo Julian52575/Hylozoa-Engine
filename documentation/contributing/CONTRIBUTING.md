@@ -1,12 +1,21 @@
-> [!IMPORTANT]
-> A permanent link to the discord can be found here: https://discord.gg/VKtT5dTZZt  
-> The project's GOVERNANCE.md can be found [here](https://github.com/Julian52575/Hylozoa-Engine/blob/main/documentation/contributing/GOVERNANCE.md) and lists the different roles you can take on !
+# Contributing to the Hylozoa Project 
 
-# **Thank you for your interest in collaborating with the Hylozoa engine project !**
+Thank you for considering helping the project !  
+The document here applies to both the engine and the ui/editor repositories.
 
-**First, familiarize yourself with the [Code of Conduct](https://github.com/Julian52575/Hylozoa-Engine/blob/main/CODE_OF_CONDUCT.md).** It's standard stuff but we all have to abide by it.  
+| Document | Purpose | 
+| - | - |
+| [Contributing](https://github.com/Julian52575/Hylozoa-Engine/blob/main/documentation/contributing/CONTRIBUTING.md) | Contributing guidelines |
+| [Dev_Guidelines](https://github.com/Julian52575/Hylozoa-Engine/blob/main/documentation/contributing/DEV_GUIDELINES.md) | Guidelines for developers |
+| [Governance](https://github.com/Julian52575/Hylozoa-Engine/blob/main/documentation/contributing/GOVERNANCE.md) | A list of the contributing roles and their rights/duties |
+| [Code of Conduct](https://github.com/Julian52575/Hylozoa-Engine/blob/main/CODE_OF_CONDUCT.md) | Rules the hylozoa community abides by. We take this seriously. |
+| [MPL 2.0 Licence](https://github.com/Julian52575/Hylozoa-Engine/tree/main?tab=MPL-2.0-1-ov-file) | The project's legal licence. |
+| [Engine's contributing documents](https://github.com/Julian52575/Hylozoa-Engine-Engine/tree/dev/documentation/contributing) | Guidelines for the engine repository |
+| ~~UI's contributing documents~~ | ~~Guidelines for the ui repository~~ |
 
-Then, here are the steps on getting started:
+## Steps
+
+Here are the steps on getting started:  
 
 ![pipeline](./Hylozoa%20Contributor%20pipeline.png)
 
