@@ -12,7 +12,7 @@ Download the latest release for your platform [here](https://github.com/Julian52
 ### Contributing
 
 **We are looking for contributors !**
-
+We have a wide range of roles available, from answering simple community calls to reviewing Pull Requests.  
 Read the document [here](/documentation/contributing) to get started on your Hylozoa life.  
 
 #### Repository
