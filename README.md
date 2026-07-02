@@ -13,7 +13,8 @@ Download the latest release for your platform [here](https://github.com/Julian52
 
 **We are looking for contributors !**
 
-Read the document [here](/documentation/contributing) to get started on your Hylozoa life
+Read the document [here](/documentation/contributing) to get started on your Hylozoa life.  
+The project is composed of 2 repositories: [Engine](https://github.com/Julian52575/Hylozoa-Engine-Engine/tree/dev) and [Editor/UI](https://github.com/Julian52575/Hylozoa-Engine-Ui).
 
 ## Discord server
 
