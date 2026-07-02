@@ -2,6 +2,11 @@ Thank you for considering working on Hylozoa-Engine !
 Find bellow all the informations you need to contribute code efficiently to the project.  
 All these guidelines are applicable to the Engine and the UI repositories.  
 
+
+![Project overview](Hylozoa%20Project%20overview.svg).    
+_The project's overview._
+
+
 # How to contribute
 
 - Read this page carefully.
@@ -35,8 +40,3 @@ All these guidelines are applicable to the Engine and the UI repositories.
 - Make sure all the workflow tests are passing before merging. _(Wait a few seconds after creating the PR for them to trigger)_
 - If the PR doesn't update code, and as such no workflow is triggered, only a review is needed.
 
----
-
-## Queries
-
-## Cache behavior
