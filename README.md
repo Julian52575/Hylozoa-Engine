@@ -1,11 +1,24 @@
-# Hylozoa Engine
+# Hylozoa-Engine Project
 
-If you are not sold on Hylozoa yet, [check our website and see how it will improve your gamedev life](https://julian52575.github.io/Hylozoa-Engine) !  
-If you are already sold on Hylozoa, welcome to the main repository !  
+**Welcome to the Hylozoa-Engine Project's official GitHub !**  
+**The project aims to create the perfect game engine for building complex ecosystems and an editor designed for easily managing hundred of species.**   
 
-## Install 
+## Getting started
 
-[Download the installer for your platform and start your hylozoa journey !](https://github.com/Julian52575/Hylozoa-Engine/releases)  
+### Download
 
-## Developer
-Check the [engine repository](https://github.com/Julian52575/Hylozoa-Engine-Engine) and the [UI repository](https://github.com/Julian52575/Hylozoa-Engine-Ui] to collaborate or explore deeply on the project !
+Download the latest release for your platform [here](https://github.com/Julian52575/Hylozoa-Engine/releases) and start your hylozoa journey !  
+
+### Contributing
+
+**We are looking for contributors !**
+
+Read the document [here](/documentation/contributing) to get started on your Hylozoa life
+
+## Discord server
+
+[<img src="/documentation/contributing/Discord%20banner.png" width="300"> </img>](https://discord.gg/BnKnjqager)   
+<small> Click the image to access the discord server </small>  
+
+The discord server is the community's hub !  
+Join it if you want to support the project !
