@@ -16,8 +16,11 @@ The document here applies to both the engine and the ui/editor repositories.
 
 Here are the steps on getting started:  
 
-![pipeline](./Hylozoa%20Contributor%20pipeline.png)
+![pipeline](./Hylozoa%20Contributor%20pipeline.png)  
 
+## Discord server
+
+[<img src="Discord%20banner.png" width="300"> </img>](https://discord.gg/BnKnjqager)   
+<small> Click the image to access the discord server </small>
 Joining the project's discord is important as it is the primary place of discussion.  
 Channels have been thoughtfully created to make your life as a collaborator as easy as possible !  
-You can easily customize your notification settings so we won't harass you !  
